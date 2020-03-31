@@ -1,0 +1,38 @@
+<import src="../common/footer.wxml"/> 
+<view class="add-container">
+ <view class="add-lists">
+    <block wx:for="{{lotteryTypes}}" wx:key="*this">
+	  <view class="add-list" data-atype="{{index}}" bindtap="onClickList">
+		<view class="add-left-img" style="background-color: {{item.color}}">
+		  <image src="{{item.img}}"></image>
+		</view>
+		<view class="add-left-text">
+		  <view class="add-title">{{item.title}}</view>
+		  <view class="add-desc">{{item.desc}}</view>
+		</view>
+	    <view class="add-right">
+		  <block wx:if="{{item.type === 0}}">
+		  	<view class="add-right-text">点击使用</view>
+		  </block>
+		  <block wx:else>
+		  	<view class="add-right-text">点击预览</view>
+		  </block>		  
+		  <image src="../../image/arrow.png"></image>
+		</view> 
+	  </view>
+	</block>
+ </view>
+ 
+ <view class="menu-lists">
+   <block wx:for="{{menuList}}" wx:key="*this">
+     <view data-atype="{{index}}" bindtap="onClickMenu" class="menu-list menu-list{{index}}">
+	    <view class="menu-img" style="background-color: {{item.color}};">
+		  <image src="{{item.img}}"></image>
+		</view>
+		<view>{{item.name}}</view>	 
+	 </view>
+   </block>
+ </view>
+ 
+ <template is="footer"/>
+</view>

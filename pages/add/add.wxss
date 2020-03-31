@@ -1,0 +1,90 @@
+/* pages/add/add.wxss */
+.add-container{
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #F0F0F0;
+  padding: 24rpx;
+}
+
+.add-list{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  margin-bottom: 24rpx;
+  padding: 24rpx;
+}
+
+.add-left-img{
+  height: 60rpx;
+  border-radius: 100rpx;
+  padding: 20rpx;
+  font-size: 0;
+}
+
+.add-left-img image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.add-left-text{
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.add-left-text .add-title{
+  line-height: 60rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.add-left-text .add-desc{
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color: #d5d5d5;  
+}
+
+.add-right .add-right-text{
+  display: inline-block;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  color: #d5d5d5;
+}
+
+.add-right image{
+  width: 28rpx;
+  height: 32rpx;
+  position: relative;
+  top: 6rpx;
+}
+
+.menu-lists{
+  display: flex;
+  flex-direction: row;
+  margin-top: 36rpx;
+}
+
+.menu-list{
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  padding: 24rpx;
+  background-color: #fff;
+  margin-left: 24rpx;
+}
+
+.menu-list0{
+  margin-left: 0;
+}
+
+.menu-img{
+  display: inline-block;
+  border-radius: 100%;
+  padding: 20rpx;
+  font-size: 0;
+  margin-bottom: 20rpx;
+}
+
+.menu-img image{
+  width: 60rpx;
+  height: 60rpx;
+}

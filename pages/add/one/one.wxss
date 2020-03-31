@@ -1,0 +1,296 @@
+/**one.wxss**/
+.one-container{
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #F0F0F0;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.one-image image{
+  width: 100%;
+  vertical-align: top;
+}
+
+.one-text{
+  background-color: #fff;
+}
+
+.one-name, .one-num, .one-receive{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 24rpx;
+  line-height: 44rpx;
+}
+
+.one-name view, .one-num view, .one-receive view{
+  display: flex;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+
+.one-name input{
+  width: 230rpx;
+  text-align: right;
+}
+
+.one-num input{
+  width: 70rpx;
+  margin-right: 16rpx;
+  text-align: right;
+}
+
+.one-receive view+view{
+  color: #999;
+}
+
+.one-receive image{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 8rpx;
+}
+
+.one-btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  border-top: 2rpx solid #dfdfdf;
+  background-color: #fff;
+}
+
+.one-btn view{
+  flex: 1;
+  padding: 20rpx;
+  padding-right: 10rpx;
+}
+
+.one-btn view+view{
+  padding-left: 10rpx;
+}
+
+.one-btn button{
+  padding: 0;
+  border-radius: 46rpx;
+}
+
+.one-btn .btn-sp{
+  border: 2rpx solid #000;
+}
+
+.btn button{
+  border: none;
+  padding: 0;
+  position: relative;
+  top: -1px;
+  color: #4493D6;
+  font-size: 30rpx;
+}
+
+.one-desc{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 28rpx;
+  padding: 12rpx 0;
+}
+
+.one-desc text{
+  color: #333;
+}
+
+.one-desc text+text{
+  color: #4493D6;
+}
+	
+.one-textarea{
+  background-color: #fff;
+} 
+
+.one-textarea textarea{
+  min-height: 160rpx;
+  width: 100%;
+  padding: 24rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.one-textarea .one-text-area{
+  display: inline-block;
+  height: 112rpx;
+  width: 100%;
+  padding: 24rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;  
+}
+
+.one-person{
+  display: flex;
+  padding: 28rpx;
+  border-top: 2rpx solid #dfdfdf;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 44rpx;
+}
+
+.one-person view+view{
+  color: #999;
+}
+
+.one-person image, .one-date image{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 6rpx;
+}
+
+.one-date{
+  display: flex;
+  padding: 28rpx;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 44rpx;
+  background-color: #fff;
+}
+
+.one-date view+view{
+  color: #dfdfdf;
+}
+
+.img-switch{
+  position: absolute;
+  top: 24rpx;
+  left: 24rpx;
+  display:flex;
+  flex-direction: row;
+}
+
+.img-switch view{
+  border: 2rpx solid #dfdfdf;
+  padding:0 20rpx;
+  line-height:50rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  border-radius: 62rpx 0 0 62rpx;  
+}
+
+.img-switch view+view{
+  border-radius: 0 62rpx 62rpx 0;
+}
+
+.img-switch view.switch-case{
+  background-color: #1DCB72;
+  color: #fff;
+}
+
+.img-btn{
+  position: absolute;
+  top: 24rpx;
+  right: 24rpx;
+  display:flex;
+  flex-direction: row;
+}
+
+.img-btn view{
+  background-color: #aaa;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  border-radius: 50rpx;
+  margin-left: 36rpx;
+  padding: 0 20rpx;
+  letter-spacing: 2rpx;
+  opacity: 0.8;
+  border: 2rpx solid #ccc;
+}
+
+.img-btn view.btn-hover{
+  background-color: #ccc;
+}
+
+.img-btn image{
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+  margin-right: 12rpx;
+  position: relative;
+  z-index: 9;
+  top: -2rpx;
+}
+
+.img-btn text{
+  position: relative;
+  z-index: 9;  
+}
+
+.one-image{
+  position: relative;
+}
+
+.modal-img{
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-body{
+  position: absolute;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+}
+
+.modal-body view{
+  text-align: center;
+  line-height: 96rpx;
+  border-bottom: 2rpx solid #dfdfdf;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.modal-body view.view-hover{
+  background-color: #aaa;
+}
+
+.modal-body view.modal-first{
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.modal-body view.modal-btn{
+  border-top: 2rpx solid #dfdfdf;
+  border-bottom: none;
+}
+
+.modal-body .view-blank{
+  height: 20rpx;
+  background-color: #f0f0f0;
+  border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

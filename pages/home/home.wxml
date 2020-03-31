@@ -1,0 +1,46 @@
+<import src="../common/list.wxml"/>
+
+<view>
+  <view class='home-header'>
+    <view class='header-left'>
+	  <view>
+	    <text>{{lucky}}</text>币
+	  </view>
+	  <view class='header-btn'>去兑换></view>
+	</view>
+	<view class='header-line'></view>
+    <view class='header-right'>
+	  <view>
+	    <text>{{money}}</text>元
+	  </view>
+	  <view class='header-btn'>去提现></view>
+	</view>
+  </view>
+  <view class='home-list'>
+    <block wx:for="{{menuList}}" wx:key="*this">
+	  <view data-atype="{{index}}" bindtap="onClickMenu" class='home-menu'>
+	    <view class="home-img" style="background-image: linear-gradient(135deg, {{item.color1}}, {{item.color2}});">
+		  <image src="{{item.img}}"></image>
+		</view>
+		<view>{{item.name}}</view>
+	  </view>
+	</block>
+  </view>
+  <view class='home-activity'>
+    <view class='activity-header'>
+	  <view class='activity-left'>推荐福利</view>
+	  <view class='activity-right'>
+	    <navigator url="/pages/common/cooperate/cooperate" hover-class="navigator-hover">我要上首页</navigator>|<navigator url="/pages/home/home" hover-class="navigator-hover">分享</navigator>
+	  </view>
+	</view>
+  </view>
+  <view class="home-main">
+    <template is="list1" data="{{list1}}" />
+    <template is="list2" data="{{list2}}" />
+    <template is="list3" data="{{list3}}" />
+  </view>
+  <view class="container">
+	<button open-type="getUserInfo" bindgetuserinfo="getPerson">获取用户信息</button>
+	<button open-type="openSetting" bindopensetting="callback">打开设置页</button>
+</view>
+</view>

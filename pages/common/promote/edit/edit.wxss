@@ -1,0 +1,124 @@
+.edit-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-tab{
+  background-color: #EA5750;
+  padding: 20rpx;
+}
+
+.switch-tab{
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  background-color: #BC453F;
+  border-radius: 6rpx;
+}
+
+.switch-tab view{
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+  transition: 0.4s all;
+}
+
+.switch-tab view.switch-text{
+  background-color: #fff;
+  border-radius: 6rpx;
+  color: #EA5750;
+}
+
+.edit-swiper{
+  flex: 1;
+  background-color: #F0F0F0;
+  padding: 0 20rpx;
+}
+
+.edit-swiper swiper{
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.edit-copy, .edit-copy1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 28rpx;
+  padding: 24rpx 0;
+}
+
+.edit-copy view+view{
+  color: #4493D6;
+}
+
+.edit-copy1 view+view{
+  color: #999;
+}
+
+input{
+  background-color: #fff;
+  padding: 24rpx;
+  width: 100%;
+}
+
+.edit-btn{
+  margin-top: 24rpx;
+}
+
+.edit-btn button{
+  padding: 0;
+  border-radius: 46rpx;
+}
+
+.edit-text{
+  font-size: 28rpx;
+  padding: 24rpx 0;  
+}
+
+.edit-type{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 20rpx 10rpx;
+}
+
+.edit-type view{
+  flex: 1; 
+  margin: 0 10rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #999;
+  font-size: 26rpx;
+  padding: 10rpx 0;
+  text-align: center;  
+}
+
+.edit-type view.select-type{
+  border-color: #DB5C56;
+  color: #DB5C56;
+}
+
+.edit-img{
+  padding: 24rpx;
+  background-color: #fff;
+  font-size: 0;
+}
+
+.edit-img image{
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.edit-img view{
+  display: inline-block;
+  padding: 48rpx;
+  background-color: #F0F0F0;
+}
+
+
+
+

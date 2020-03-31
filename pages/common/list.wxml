@@ -1,0 +1,11 @@
+<!-- 列表list组件 -->
+<template name="list1">
+  <view class="home-list1">
+  </view>
+</template>
+<template name="list2">
+
+</template>
+<template name="list3">
+
+</template>

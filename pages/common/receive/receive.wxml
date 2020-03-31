@@ -1,0 +1,4 @@
+<view class="receive-container">
+  <view>选择至少一种发放奖品的方式</view>
+  <block wx:for="{{ReceiveTypes}}"></block>
+</view>

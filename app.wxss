@@ -1,0 +1,27 @@
+/**app.wxss**/
+page{
+  height: 100%;
+  position: relative;
+}
+
+.add-footer{
+  text-align: center;
+  color: #d5d5d5;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  padding: 48rpx 0;
+}
+
+.footer-text{
+  font-size: 0;
+}
+
+.footer-text text{
+  font-size: 24rpx;
+}
+
+.footer-text .text-sp{
+  margin: 0 24rpx;
+  line-height: 60rpx;
+  font-size: 36rpx;
+}

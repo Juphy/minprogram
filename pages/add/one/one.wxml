@@ -1,0 +1,98 @@
+<!-- one抽奖类型 -->
+<import src="../../common/footer.wxml"/> 
+<view class="one-container">
+  <form bindsubmit="formSubmit">
+  <block wx:for="{{prizes}}" wx:key="*this"	>
+    <view class="one-image">
+      <image src="{{item.img}}"></image>
+	  <view class="img-switch">
+	    <view data-index="1" bindtap="changeSwitch" class="{{item.type===1?'switch-case':''}}">奖品</view>
+	    <view data-index="2" bindtap="changeSwitch" class="{{item.type===2?'switch-case':''}}">红包</view>
+	  </view>
+	  <view class="img-btn">
+	    <view hover-class="btn-hover"><image src="../../../image/shopping.png"></image><text>奖品商城</text></view>
+	    <view hover-class="btn-hover" data-index="0" bindtap="showModal"><image src="../../../image/image.png"></image><text>更换图片</text></view>
+	  </view>
+    </view>
+	<view class="one-text">
+	  <view class="one-name">
+	   <view>{{TypeText[item.type].name}}</view>
+	   <input type="{{type===1?'text':'number'}}" 
+	   placeholder="{{TypeText[item.type]._name}}"
+	   data-index="{{index}}"
+       bindinput="bindInputName"	   
+	   value="{{type===1?item.name: item.money}}"
+	   bindblur="bindBlur"/>
+	  </view>
+	  <view class="one-num">
+	    <view>{{TypeText[item.type].num}}</view>
+	    <view>
+		  <input type="number" 
+		   placeholder="{{TypeText[item.type]._num}}" 
+		   value="{{item.num}}"
+		   data-index="{{index}}"
+		   bindinput='bindInputNum'/>份	     
+	    </view>
+	  </view>
+      <view class="one-receive">
+	    <view>奖品发放方式</view>
+		<view><text>{{item._receive_type}}</text><image src="../../../image/arrow.png"></image></view>
+	  </view>	  
+	</view>
+  </block>
+  <view class="btn">
+   <button type="default">+ 添加奖品</button>
+  </view>
+  <view class="one-desc">
+   <text>抽奖说明</text>
+   <text>选填</text>
+  </view>
+  <view class="one-textarea">
+    <textarea wx:if="{{hideModal}}" bindtap="bindTextareaTap" disabled="true" value="{{describe}}" placeholder="请输入本次抽奖活动的说明"/>
+	<text wx:else class="one-text-area">{{describe? describe:'请输入本次抽奖活动的说明'}}</text>
+	<view class='one-person' bindtap="bindPromoteTap">
+	 <view>发起人信息</view>
+	 <view>{{promote.id?promote.promote_name:'微信号或公众号等'}}<image src="../../../image/arrow.png"></image></view>
+	</view>
+  </view>
+  <view class="one-desc">
+   <text>定时开奖</text>
+   <text>修改开奖方式></text>
+  </view>
+  <view class="one-pre">
+   <view>
+     <view>高级功能</view>
+     <view>好友助力、评论功能、公众号粉丝抽奖等</view>
+   </view>
+   <view>
+     <switch bindchange="switchChange"/>
+   </view>
+  </view>
+  <view class='one-date'>
+    <view>开奖时间</view>
+	<view><picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker><image src="../../../image/arrow.png"></image></view>
+  </view>
+  <view class="one-btn">
+    <view>
+	  <button type="default" class="btn-sp">预览</button>
+	</view>
+	<view>
+	  <button type="warn" form-type="submit">发起抽奖</button>
+	</view>
+  </view>
+  </form>
+  <template is="footer"/>
+  <view class='modal-img' hidden="{{hideModal}}">
+    <view class="modal-body" animation="{{animationData}}">
+    <view hover-class="view-hover" class="modal-first" bindtap="chooseImage">从手机相册选择</view>
+    <view hover-class="view-hover">从在线图库选择</view>
+    <view hover-class="view-hover" bindtap="chooseMessageFile">从微信回话选择</view>
+	<view class="view-blank"></view>
+    <view hover-class="view-hover" data-index="1" bindtap="showModal" class="modal-btn">取消</view>	
+	</view>
+  </view> 
+</view>

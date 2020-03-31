@@ -1,0 +1,27 @@
+<image-cropper 
+	id="image-cropper" 
+	bindload="cropperload" 
+	bindimageload="loadimage" 
+	bindtapcut="clickcut" 
+	limit_move="{{limit_move}}" 
+	disable_rotate="{{disable_rotate}}" 
+	width="{{width}}" 
+	height="{{height}}" 
+	imgSrc="{{src}}" 
+	angle="{{angle}}" 
+	disable_width="{{disable_width}}" 
+	disable_height="{{disable_height}}"
+	disable_ratio="{{disable_ratio}}">
+</image-cropper>
+<text class="hint">点击中间裁剪框可查看裁剪后的图片</text>
+<view class='bottom'>
+  <view class="bottom-views" hidden="{{image_type!==0}}">
+    <view data-index="1" bindtap="changeRatio" class="{{width===height?'select-view':''}}">正方形</view>
+    <view data-index="0" bindtap="changeRatio" class="{{width!==height?'select-view':''}}">长方形</view>
+  </view>
+  <view class="bottom-btns">
+	<button bindtap='cancel'>取消选择</button>
+	<button type="warn" bindtap='submit' style="color: #EA5750">确定上传</button>
+	<button catchtap='upload'>重新选择</button>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+<view class="edit-container">
+  <view class="edit-tab">
+    <view class="switch-tab">
+	  <view data-index="0" bindtap="bindSwitch" class="{{state===0?'switch-text':''}}">一键复制</view>
+	  <view data-index="1" bindtap="bindSwitch" class="{{state===1?'switch-text':''}}">快捷扫码</view>
+	</view>
+  </view>
+  <view class="edit-swiper">
+    <swiper current="{{state}}">
+      <swiper-item>
+        <view>
+          <view class="edit-copy">
+		    <view>需被复制内容</view>
+		    <view>什么是一键复制？</view>
+		  </view>
+		  <view class="edit-input">
+		    <input data-index="0" value='{{promote1.promote_name}}' bindinput="bindInput" placeholder="可输入微信号、公众号等"/>
+		  </view>
+		  <view class="edit-copy1">
+		    <view>引导复制文案</view>
+		    <view>选填</view>		       
+		  </view>
+		  <view class="edit-input1">
+		    <input data-index="1" value='{{promote1.promote_guide}}' bindinput="bindInput" placeholder="请输入引导用户复制的文案"/>
+		  </view>
+		  <view class='edit-btn'>
+		    <button type='warn' bindtap="editPromote">保存</button>
+		  </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          <view class="edit-copy">
+		    <view>请选择关注方式</view>
+		    <view>什么是快捷扫码？</view>
+		  </view>
+		  <view class="edit-type">
+			<view wx:for="{{Promotes}}" wx:key="*this" data-index="{{item.value}}" class="{{promote2.promote_type===item.value?'select-type':''}}" bindtap="bindSelect">{{item.name}}</view>
+		  </view>
+		  <view class="edit-text">{{Promote[promote2.promote_type].name1}}</view>
+		  <view class="edit-input">
+		    <input data-index="0" value='{{promote2.promote_name}}' bindinput="bindInput" placeholder="请输入{{Promote[promote2.promote_type].name1}}"/>
+		  </view>
+		  <view class="edit-text">{{Promote[promote2.promote_type].name2}}</view>
+		  <view class="edit-img">
+		    <view>
+			  <image src="../../../../image/add.png"></image>
+			</view>
+		  </view>
+		  <view class="edit-copy1">
+		    <view>引导文案</view>
+		    <view>选填</view>		       
+		  </view>
+		  <view class="edit-input1">
+		    <input data-index="1" value='{{promote1.promote_guide}}' bindinput="bindInput" placeholder="请输入引导用户复制的文案"/>
+		  </view>
+        </view>
+      </swiper-item>
+    </swiper>  
+  </view>
+</view>

@@ -1,0 +1,100 @@
+/* pages/home/home.wxss */
+.home-header{
+  display: flex;
+  flex-direction:row;
+  background-image: linear-gradient( #EA5750, #F36E5B);
+  height: 150rpx;
+  width: 100%;
+  border-bottom-right-radius:100%;
+  border-bottom-left-radius:100%;
+}
+
+.header-line{
+  background-color: #fff;
+  width: 2rpx;
+  height: 50%;
+}
+
+.header-left, .header-right{
+  color: #fff;
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.header-left text, .header-right text{
+  font-size: 54rpx;
+  font-weight: 800;
+  margin-right: 6rpx;
+}
+
+.header-btn{
+  display: inline-block;
+  background-color: #fff;
+  color: #EA5750;
+  margin-top: 12rpx;
+  border: 2rpx solid #fff;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-weight: 200;
+  letter-spacing: 2rpx
+}
+
+.home-list{
+  display: flex;
+  flex-direction: row;
+  margin-top: 24rpx;
+}
+
+.home-menu{
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.home-img{
+  display: inline-block;
+  border-radius: 100%;
+  padding: 20rpx;
+  font-size: 0;
+  margin-bottom: 20rpx;
+}
+
+.home-img image{
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.activity-header{
+  background-color: #F0F0F0;
+  padding: 36rpx;
+  line-height: 24rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 24rpx;
+}
+
+.activity-header .activity-left{
+  flex: 1;
+  text-align: left;
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #EA5750;
+}
+
+.activity-header .activity-right{
+  flex: 1;
+  text-align: right;
+}
+
+.activity-right navigator{
+  display: inline-block;
+  margin-right: 24rpx;
+}
+
+.activity-right navigator+navigator{
+  margin-left: 24rpx;
+  margin-right: 0rpx;
+}

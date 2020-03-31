@@ -1,0 +1,11 @@
+<!-- footer组件 -->
+<template name="footer">
+ <view class="add-footer">
+   <view class="footer-text">
+     <text>————</text>
+     <text class="text-sp">活动抽奖</text>
+     <text>————</text>
+   </view>
+   <view>超过6000万人使用的免费抽奖平台</view>
+ </view>
+</template>
