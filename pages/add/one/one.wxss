@@ -112,8 +112,9 @@
   background-color: #fff;
 } 
 
-.one-textarea textarea{
-  min-height: 160rpx;
+.one-textarea editor{
+  min-height: 120rpx;
+  height: auto;
   width: 100%;
   padding: 24rpx;
   font-size: 28rpx;

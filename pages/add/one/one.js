@@ -22,7 +22,8 @@ Page({
 		money: null,
 	    num: '', 
 	    img: '../../../image/hongbao.jpg', 
-	    receive_type: 0,
+	    receive_type: 0, // 1 按收货地址收货 2 让中奖者联系我
+		receive_promote: {},
 	    promote:{}
 	  }
 	],
@@ -46,6 +47,15 @@ Page({
       item['_receive_type'] = receiveType.name;	  
 	});
     this.setData({prizes});	
+  },
+  
+  onShow: function(){  
+	var that = this;  
+    wx.createSelectorQuery().select('#editor-text').context(res => {
+	  res.context.setContents({
+		html: this.data.describe  
+	  })	
+	}).exec();
   },
   
   bindInputName: function(e){
@@ -76,6 +86,12 @@ Page({
 	wx.navigateTo({
 		url: "/pages/common/promote/promote"
 	})   
+  },
+  
+  bindReceive: function(e){
+	wx.navigateTo({
+		url: "/pages/common/receive/receive"
+	})   	  
   },
   
   formSubmit: function(e){

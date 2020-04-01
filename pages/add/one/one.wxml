@@ -34,22 +34,21 @@
 		   bindinput='bindInputNum'/>份	     
 	    </view>
 	  </view>
-      <view class="one-receive">
+      <view class="one-receive" bindtap="bindReceive">
 	    <view>奖品发放方式</view>
 		<view><text>{{item._receive_type}}</text><image src="../../../image/arrow.png"></image></view>
 	  </view>	  
 	</view>
   </block>
   <view class="btn">
-   <button type="default">+ 添加奖品</button>
+   <button type="default" bindtap="addPrize">+ 添加奖品</button>
   </view>
   <view class="one-desc">
    <text>抽奖说明</text>
    <text>选填</text>
   </view>
   <view class="one-textarea">
-    <textarea wx:if="{{hideModal}}" bindtap="bindTextareaTap" disabled="true" value="{{describe}}" placeholder="请输入本次抽奖活动的说明"/>
-	<text wx:else class="one-text-area">{{describe? describe:'请输入本次抽奖活动的说明'}}</text>
+    <editor id="editor-text" read-only="true" bindtap="bindTextareaTap" placeholder="请输入本次抽奖活动的说明"></editor>
 	<view class='one-person' bindtap="bindPromoteTap">
 	 <view>发起人信息</view>
 	 <view>{{promote.id?promote.promote_name:'微信号或公众号等'}}<image src="../../../image/arrow.png"></image></view>

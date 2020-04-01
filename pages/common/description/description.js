@@ -1,22 +1,21 @@
 Page({
-  data: {
-	describe: ''  
-  },
+  data: {},
   
   onShow: function(){
 	let pages = getCurrentPages();
     var prepage = pages[pages.length - 2];
-    this.setData({
-	  describe: prepage.data.describe	
-	})  
+	var that = this;  
+    wx.createSelectorQuery().select('#editor-textarea').context(res => {
+	  res.context.setContents({
+		html: prepage.data.describe  
+	  })	
+	}).exec();	
   },
   
   bindTextAreaInput: function(e){
 	let pages = getCurrentPages();
-    var prepage = pages[pages.length - 2], describe = e.detail.value;
+    var prepage = pages[pages.length - 2], describe = e.detail.html;
     prepage.setData({describe});
-    this.setData({describe});
-	console.log(this.data.describe);	
   },
   
   bindTap: function(e){

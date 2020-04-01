@@ -1,4 +1,4 @@
 <view class="desc-container">
- <textarea bindinput="bindTextAreaInput" show-confirm-bar="true" value="{{describe}}" placeholder="请输入本次抽奖活动的说明"/>
+ <editor id="editor-textarea" bindinput="bindTextAreaInput" value="{{describe}}" placeholder="请输入本次抽奖活动的说明"></editor>
  <button type="warn" bindtap="bindTap">保存</button>
 </view>

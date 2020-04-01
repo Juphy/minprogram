@@ -9,7 +9,9 @@
   box-sizing: border-box;
 }
 
-.desc-container textarea{
+.desc-container editor{
+  min-height: 240rpx;
+  height: auto;
   width: 100%;
   background-color: #fff;
   padding: 24rpx;
@@ -19,6 +21,7 @@
 .desc-container button{
   margin-top: 24rpx;
   padding: 0;
+  border-radius: 46rpx;
   border-radius: 46rpx;
   box-sizing: border-box;
 }

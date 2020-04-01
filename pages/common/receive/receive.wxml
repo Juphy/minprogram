@@ -1,4 +1,22 @@
 <view class="receive-container">
-  <view>选择至少一种发放奖品的方式</view>
-  <block wx:for="{{ReceiveTypes}}"></block>
+  <view class="receive-text">选择至少一种发放奖品的方式</view>
+  <block wx:for="{{ReceiveTypes}}" wx:key="*this">
+    <view class="{{receive_type===item.value?'receive-lists receive-select':'receive-lists'}}"
+		  bindtap="changReceiveType"
+	      data-index="{{item.value}}">
+      <radio class="radio" checked="{{item.value===receive_type}}"></radio>
+      <view class='receive-list'>
+	    <view>{{item.name}}</view>
+	    <view>{{item.desc}}</view>
+	  </view>	  
+	</view>
+  </block>
+  <view wx:if="{{receive_type===2}}" class="receive-promote">
+    <view class="receive-text">选择联系方式</view>
+	<view class='one-person'>
+	  <view>发起人信息</view>
+	  <view>{{promote.id?promote.promote_name:'微信号或公众号等'}}<image src="../../../image/arrow.png"></image></view>	
+	</view>
+  </view>
+  <button type="warn">保存</button>
 </view>
