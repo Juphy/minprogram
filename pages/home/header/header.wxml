@@ -1,0 +1,27 @@
+<view class="header-container">
+  <view class="weui-flex">
+    <view class="weui-flex__item we-left" data-index="1" bindtap="tapEvent">
+      <view class="we-text">
+        <text>{{lucky}}</text>
+        币
+      </view>
+      <view class="weui-cell weui-cell_active weui-cell_access we-btn" data-index="1" bindtap="tapEvent">
+        <view class="weui-cell__bd">
+          <text>去兑换></text>
+        </view>
+      </view>
+    </view>
+    <view class="we-line"></view>
+    <view class="weui-flex__item we-right" data-index="2" bindtap="tapEvent">
+      <view class="we-text">
+        <text>{{money}}</text>
+        元
+      </view>
+      <view class="weui-cell weui-cell_active weui-cell_access we-btn" data-index="2" bindtap="tapEvent">
+        <view class="weui-cell__bd">
+          <text>去提现></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

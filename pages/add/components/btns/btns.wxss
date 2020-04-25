@@ -1,0 +1,28 @@
+.btns-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 2rpx solid #dfdfdf;
+  background-color: #fff;
+}
+
+.btns-container view {
+  flex: 1;
+  padding: 20rpx;
+  padding-right: 10rpx;
+}
+
+.btns-container view + view {
+  padding-left: 10rpx;
+}
+
+.btns-container button {
+  padding: 0;
+  border: none;
+  border-radius: 96rpx;
+}
+
+.btns-container .btn-sp {
+  border: 2rpx solid #000;
+}

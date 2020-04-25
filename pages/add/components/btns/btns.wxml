@@ -1,0 +1,8 @@
+<view class="weui-flex btns-container">
+    <view class="weui-flex__item">
+        <button type="default" class="btn-sp" data-index="0" bindtap="tapEvent">预览</button>
+    </view>
+    <view class="weui-flex__item">
+        <button type="warn" data-index="1" bindtap="tapEvent">发起抽奖</button>
+    </view>
+</view>

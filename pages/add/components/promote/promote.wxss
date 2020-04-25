@@ -1,0 +1,68 @@
+.promote-container{
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #F0F0F0;
+  padding: 20rpx;
+}
+
+.promote-text{
+  color: #333;
+  font-size: 26rpx;
+}
+
+.promote-btn{
+  margin-top: 16rpx;
+}
+
+.promote-btn button{
+  width: 100%;
+  padding: 0;
+  color: #4493D6;
+  font-size: 32rpx;
+  background-color: #fff;
+  border-radius: none;
+}
+
+.promotes{
+  margin-top: 20rpx;
+}
+
+.promote-list{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+  box-sizing: border-box;
+}
+
+.promote-list .promote-img, .promote-list .promote-edit{
+  padding: 10rpx;
+  font-size: 0
+}
+
+.promote-img{
+  border-radius: 52rpx;
+}
+
+.promote-img image, .promote-edit image{
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.promote-name{
+  flex: 1;
+  line-height: 52rpx;
+  margin-left: 20rpx;
+}
+
+.select-list{
+  outline: 2rpx solid #DB5C56;
+  outline-radius: 5rpx;
+}
+
+.promote-add{
+  padding: 20rpx;
+  line-height: 52rpx;
+  background-color: #fff;
+}

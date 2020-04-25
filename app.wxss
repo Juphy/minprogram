@@ -1,10 +1,13 @@
-/**app.wxss**/
-page{
+@import "weui.wxss";
+
+page {
   height: 100%;
   position: relative;
+  font-family: "微软雅黑", "Franklin Gothic Medium", "Arial Narrow", Arial,
+    sans-serif;
 }
 
-.add-footer{
+.add-footer {
   text-align: center;
   color: #d5d5d5;
   font-size: 24rpx;
@@ -12,15 +15,15 @@ page{
   padding: 48rpx 0;
 }
 
-.footer-text{
+.footer-text {
   font-size: 0;
 }
 
-.footer-text text{
+.footer-text text {
   font-size: 24rpx;
 }
 
-.footer-text .text-sp{
+.footer-text .text-sp {
   margin: 0 24rpx;
   line-height: 60rpx;
   font-size: 36rpx;

@@ -1,0 +1,19 @@
+<view class="page">
+  <view wx:if="{{showDialog}}" class="fadeIn" data-index="0" bindtap="close">
+    <view class="weui-mask"></view>
+    <view class="weui-actionsheet weui-actionsheet_toggle">
+      <view class="weui-actionsheet__menu">
+        <block wx:for="{{imgLists}}" wx:key="*this">
+          <view class="weui-actionsheet__cell" data-index="{{item.value}}" bindtap="tapEvent">
+            {{item.name}}
+          </view>
+        </block>
+      </view>
+      <view class="weui-actionsheet__action">
+        <view class="weui-actionsheet__cell  weui-actionsheet__cell_warn" data-index="0" bindtap="tapEvent">
+          取消
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

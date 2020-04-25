@@ -1,0 +1,10 @@
+<view class='home-list'>
+  <block wx:for="{{menuList}}" wx:key="*this">
+    <view data-index="{{index}}" bindtap="selectMenu" class='home-menu'>
+      <view class="home-img" style="background-image: linear-gradient(135deg, {{item.color1}}, {{item.color2}});">
+        <image src="{{item.img}}"></image>
+      </view>
+      <view>{{item.name}}</view>
+    </view>
+  </block>
+</view>

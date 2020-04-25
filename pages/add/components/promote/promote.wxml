@@ -1,0 +1,20 @@
+<view class="promote-container">
+  <view class="promote-text">已添加的发起人信息</view>
+  <view class="promotes">
+    <block wx:for="{{promote_list}}" wx:key="*this">
+	<view class="{{state === item.id?'promote-list select-list':'promote-list'}}" data-index="{{item.id}}" bindtap="selectList">
+	  <view class="promote-img" style="background-color:{{PromoteTypes[item.promote_type].color}}">
+	    <image src="{{PromoteTypes[item.promote_type].img}}"></image>
+	  </view>
+	  <view class="promote-name">{{item.promote_name}}</view>
+	  <view class="promote-edit" data-index="{{item.id}}" catchtap="editPromote">
+	    <image src="../../../image/edit.png"></image>
+	  </view>
+	</view>
+	</block>
+	<view class="promote-add" wx:if="{{promote_list.length}}" data-index='0' bindtap="selectList">不使用发起人信息</view>
+  </view>
+  <view class="promote-btn">
+    <button type="default" bindtap="bindTap">+ 添加发起人信息</button>
+  </view>
+</view>

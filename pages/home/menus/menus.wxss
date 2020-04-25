@@ -1,0 +1,24 @@
+.home-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24rpx;
+}
+
+.home-menu {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.home-img {
+  display: inline-block;
+  border-radius: 100%;
+  padding: 20rpx;
+  font-size: 0;
+  margin-bottom: 20rpx;
+}
+
+.home-img image {
+  width: 70rpx;
+  height: 70rpx;
+}

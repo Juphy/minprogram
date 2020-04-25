@@ -1,0 +1,82 @@
+.receive-container{
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #F0F0F0;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.receive-lists{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 36rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  border: 2rpx solid #d5d5d5;
+  border-radius: 5rpx;
+  margin-bottom: 24rpx;
+}
+
+.receive-lists radio{
+  vertical-align: middle;
+  color: #e64340;
+}
+
+.receive-list{
+  flex: 1;
+  margin-left: 36rpx;
+}
+
+.receive-list view{
+  color: #000;
+  line-height: 36rpx;
+  font-size: 30rpx;
+}
+
+.receive-list view+view{
+  color: #999;
+  line-height: 30rpx;
+  font-size: 24rpx;
+}
+
+view.receive-select{
+  border-color: #EA5750
+}
+
+.receive-text{
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+
+.receive-promote .receive-text{
+  margin-top: -24rpx;
+}
+
+.receive-promote .one-person{
+  display: flex;
+  padding: 28rpx;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 44rpx;
+  background-color: #fff;  
+}
+
+.one-person view+view{
+  color: #999;
+}
+
+.one-person image{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 6rpx;
+}
+
+.receive-container button{
+  margin-top: 24rpx;
+  padding: 0;
+  border-radius: 46rpx;
+  border-radius: 46rpx;
+  box-sizing: border-box;  
+}

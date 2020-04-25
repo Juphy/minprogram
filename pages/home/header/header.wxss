@@ -1,0 +1,48 @@
+.we-text,
+.we-right,
+.we-left {
+  text-align: center;
+  color: #fff;
+}
+.we-text text {
+  font-size: 54rpx;
+  font-weight: 800;
+  margin-right: 6rpx;
+}
+.we-btn {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  background-color: #fff;
+  color: #ea5750;
+  border: 2rpx solid #fff;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 200;
+  letter-spacing: 1rpx;
+}
+
+.header-container {
+  margin-left: -60rpx;
+  margin-right: -60rpx;
+  background-image: linear-gradient(#ea5750, #f36e5b);
+  height: 200rpx;
+  border-bottom-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  background-color: #fff;
+}
+
+.we-line {
+  width: 2rpx;
+  font-size: 0;
+  background-color: #fff;
+  opacity: 0.5;
+  height: 100rpx;
+  top: 24rpx;
+  position: relative;
+}
+
+.weui-cell:before {
+  border: none;
+}

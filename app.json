@@ -4,13 +4,13 @@
     "pages/add/add",
     "pages/logs/logs",
     "pages/mine/mine",
-	"pages/common/cooperate/cooperate",
-	"pages/add/one/one",
-	"pages/common/description/description",
-	"pages/common/promote/promote",
-	"pages/common/promote/edit/edit",
-	"pages/common/receive/receive",
-	"pages/common/cropper/cropper"
+    "pages/common/cooperate/cooperate",
+    "pages/add/one/one",
+    "pages/add/components/promote/promote",
+    "pages/add/components/promote/edit/edit",
+    "pages/add/components/receive/receive",
+    "pages/common/description/description",
+    "pages/common/cropper/cropper"
   ],
   "window": {
     "backgroundColor": "#EA5750",

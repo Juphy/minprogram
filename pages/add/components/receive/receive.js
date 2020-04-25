@@ -1,4 +1,4 @@
-const Data = require("../../Data.js");
+const Data = require("../../../Data.js");
 const ReceiveTypes = Data.ReceiveTypes;
 Page({
 	data: {
@@ -13,7 +13,8 @@ Page({
 		}
 	},
 
-	onShow() {
+	onShow(options) {
+		console.log(options);
 		this.setData({ ReceiveTypes });
 		let pages = getCurrentPages();
 		var prepage = pages[pages.length - 2];

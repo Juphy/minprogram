@@ -1,4 +1,9 @@
 {
    "navigationBarTitleText": "发起抽奖",
-   "enablePullDownRefresh": false
+   "enablePullDownRefresh": false,
+   "usingComponents": {
+      "we-btns": "../components/btns/btns",
+      "we-img": "../components/imgsheet/imgsheet",
+      "we-date": "../components/datesheet/datesheet"
+   }
 }
