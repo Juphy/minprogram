@@ -3,9 +3,9 @@
  <view class="add-footer">
    <view class="footer-text">
      <text>————</text>
-     <text class="text-sp">活动抽奖</text>
+     <text class="text-sp">一起拼手气</text>
      <text>————</text>
    </view>
-   <view>超过6000万人使用的免费抽奖平台</view>
+   <view>超过100万人使用的免费抽奖平台</view>
  </view>
 </template>

@@ -1,34 +1,3 @@
-/**index.wxss**/
-.mine-container {
-  height: 100%;
-  overflow-y: scroll;
-  background-color: #f0f0f0;
-  padding: 24rpx;
-}
-
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-
-
 .index-hd {
   padding: 80rpx;
   text-align: center;
@@ -139,43 +108,4 @@
 }
 .kind-list-item-bd-show {
   height: auto;
-}
-
-
-.item-content{
-  display:flex;
-  flex:1;
-}
-
-.item-text{
-  width:370rpx;
-}
-
-.item-right{
-  font-size:20rpx;
-  text-align:right;
-  display:flex;
-  flex:1;
-  margin:10rpx;
-}
-
-.item-right-text{
-  color:#d4237a;
-}
-
-.item-right-icon{
-  width: 15px;
-  height: 10px;
-  margin: 0 8rpx;
-  vertical-align:middle;
-}
-.button{
-  background-color:#f0f0f0;
-  color: #d5d5d5;
-  height: 60rpx;
-  font-size: 30rpx;
-}
-
-.button::after{
-  border:none;
 }

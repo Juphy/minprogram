@@ -1,10 +1,84 @@
 <!--index.wxml-->
-<view class="container">
+<import src="../common/footer.wxml" />
+<view class="mine-container index">
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+    <view class="weui-panel" style="border-radius: 20rpx;">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+              <block wx:for="{{mineMenuList}}" wx:key="*this">
+                <navigator url="{{item.url}}" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+                    <view class="weui-cell__hd"><image src="{{item.icon}}" style="width: 20px;height:20px;margin-right: 16px;vertical-align:middle;" /></view>
+                    <view class="weui-cell__bd weui-cell_primary">
+                        <view class = "item-text">{{item.title}}</view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </navigator>
+              </block>
+          </view>
+      </view>
+    </view>
+
+
+  <view class="weui-panel" style="border-radius: 20rpx;">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+              
+              <navigator url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="../../image/presentfill_mine.png" style="width: 20px;height:20px;margin-right: 16px;vertical-align:middle;" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view class="item-content">
+                        <view class = "item-text">我的奖品</view>
+                        <view class = "item-right">
+                          <view class="item-right-text">现金红包劵</view>
+                          <view>
+                            <image class="item-right-icon" src="../../image/coupon.png"/>
+                          </view>
+                        </view>
+                      </view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="../../image/order.png" style="width: 20px;height: 20px;margin-right: 16px;vertical-align:middle;" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>我的订单</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd weui-cell_primary" ><image src="../../image/questionfill.png" style="width: 20px;height: 20px;margin-right: 10px;vertical-align:middle;" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view style="margin-left:10rpx;">常见问题</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="../../image/handshake.png" style="width: 20px;height: 20px;margin-right: 16px;vertical-align:middle;" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view style="margin-left:10rpx;">商务合作</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+          </view>
+      </view>
   </view>
+
+  <view class="weui-footer__links add-footer">
+      <navigator class="weui-footer__link" url="" >
+        <button class="button" open-type="feedback">意见反馈</button>
+      </navigator>
+      
+      <navigator url="" class="weui-footer__link">
+        <button class="button">免责说明</button>
+      </navigator>
+      <navigator url="" class="weui-footer__link">
+        <button class="button">我要投诉</button>
+      </navigator>
+  </view>
+
+  <template is="footer" />
 </view>

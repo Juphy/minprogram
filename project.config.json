@@ -17,7 +17,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.0.0",
 	"appid": "wx7a21be0aad514f90",
-	"projectname": "test",
+	"projectname": "applet_raffle",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

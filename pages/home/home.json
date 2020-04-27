@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "活动抽奖",
+  "navigationBarTitleText": "一起拼手气",
   "usingComponents": {
     "we-header": "header/header",
     "we-menu": "menus/menus"

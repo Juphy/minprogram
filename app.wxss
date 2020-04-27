@@ -12,7 +12,7 @@ page {
   color: #d5d5d5;
   font-size: 24rpx;
   line-height: 36rpx;
-  padding: 48rpx 0;
+  padding: 25rpx 0;
 }
 
 .footer-text {
