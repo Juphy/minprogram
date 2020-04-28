@@ -8,7 +8,6 @@
 	width="{{width}}" 
 	height="{{height}}" 
 	imgSrc="{{src}}" 
-	angle="{{angle}}" 
 	disable_width="{{disable_width}}" 
 	disable_height="{{disable_height}}"
 	disable_ratio="{{disable_ratio}}">
@@ -21,7 +20,7 @@
   </view>
   <view class="bottom-btns">
 	<button bindtap='cancel'>取消选择</button>
-	<button type="warn" bindtap='submit' style="color: #EA5750">确定上传</button>
+	<button type="warn" bindtap='submit' style="color: #fff">确定上传</button>
 	<button catchtap='upload'>重新选择</button>
   </view>
 </view>

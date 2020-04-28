@@ -50,7 +50,7 @@
     </block>
   </form>
   <form bindsubmit="formSubmit">
-    <block wx:for="{{prizes}}" wx:key="*this">
+    <!-- <block wx:for="{{prizes}}" wx:key="*this">
       <view class="one-image">
         <image src="{{item.image}}"></image>
         <view class="img-switch">
@@ -92,7 +92,7 @@
           </view>
         </view>
       </view>
-    </block>
+    </block> -->
     <view class="btn">
       <button type="default" bindtap="addPrize">+ 添加奖品</button>
     </view>
@@ -165,33 +165,9 @@
       </view>
       <view class="pre-join">
         <view class="desc-text">
-          <!-- <view hidden="{{joinFriend}}" class="pre-hidden" bindtap="showUnEdit"></view> -->
           <text>允许参与者分享</text>
           <switch data-index="1" color="#E9564F" checked="{{need_share}}" bindchange="changePreChecked" />
         </view>
-        <!-- <view class="pre-line"></view>
-        <view class="desc-text">
-          <view hidden="{{allowJoin}}" class="pre-hidden" bindtap="showUnEdit"></view>
-          <text>好友助力</text>
-          <switch data-index="2" color="#E9564F" checked="{{joinFriend}}" bindchange="changePreChecked" />
-        </view>
-        <block wx:if="{{joinFriend}}">
-          <view class="pre-line"></view>
-          <view class="pre-join">
-            <view>
-              <view>助力倍数</view>
-              <view>
-                <image src="../../../image/arrow.png"></image>
-              </view>
-            </view>
-            <view>
-              <view>助力红包</view>
-            </view>
-            <view>
-              <view>助力口令</view>
-            </view>
-          </view>
-        </block> -->
       </view>
       <view class="pre-join">
         <view class="desc-text">
@@ -230,15 +206,6 @@
   </form>
   <template is="footer" />
   <we-img showDialog="{{hideModal}}" bind:click="tapImg"></we-img>
-  <!-- <view class='modal-img' hidden="{{hideModal}}">
-    <view class="modal-body" animation="{{animationData}}">
-      <view hover-class="view-hover" class="modal-first" bindtap="chooseImage">从手机相册选择</view>
-      <view hover-class="view-hover">从在线图库选择</view>
-      <view hover-class="view-hover" bindtap="chooseMessageFile">从微信回话选择</view>
-      <view class="view-blank"></view>
-      <view hover-class="view-hover" data-index="1" bindtap="showModal" class="modal-btn">取消</view>
-    </view>
-  </view> -->
   <view class='modal-img' hidden="{{hideModal1}}">
     <view class="modal-body" animation="{{animationData}}">
       <view hover-class="view-hover" data-index="1" bindtap="changeDrawMode">定时开奖</view>

@@ -129,10 +129,9 @@ Page({
   },
 
   tapImg(e) {
-    let index = +e.detail.index, that = this;
+    let index = +e.detail.index, that = this, hideModal = false;;
     switch (index) {
       case 0:
-        let hideModal = false;
         this.setData({ hideModal })
         break;
       case 1:
@@ -141,14 +140,8 @@ Page({
           sizeType: ['original', 'compressed'],
           sourceType: ['album', 'camera'],
           success(res) {
-            const tempFilePaths = res.tempFilePaths[0];
-            let prizes = that.data.prizes, index = that.data.index;
-            let prize = prizes[index];
-            prize.image = tempFilePaths;
-            wx.navigateTo({
-              url: "/pages/common/cropper/cropper?image_source=0&image_type=0&src=" + tempFilePaths
-            });
-            that.setData({ hideModal: false })
+            that.setData({ hideModal })
+            that.handleImgSuccess(res, index, 0);
           }
         })
         break;
@@ -159,20 +152,23 @@ Page({
           count: 1,
           type: 'image',
           success(res) {
-            const tempFilePaths = res.tempFiles[0];
-            let prizes = that.data.prizes, index = that.data.index;
-            let prize = prizes[index];
-            prize.image = tempFilePaths;
-            wx.navigateTo({
-              url: "/pages/common/cropper/cropper?image_source=0&image_type=0&src=" + tempFilePaths
-            });
-            that.setData({ hideModal: false })
+            that.setData({ hideModal })
+            that.handleImgSuccess(res, index, 0);
           }
         })
         break;
     }
   },
 
+  handleImgSuccess(res, image_source, image_type) {
+    const tempFilePaths = res.tempFilePaths[0];
+    // let prizes = this.data.prizes, index = this.data.index;
+    // let prize = prizes[index];
+    // prize.image = tempFilePaths;
+    wx.navigateTo({
+      url: `/pages/common/cropper/cropper?image_source=${image_source}&image_type=${image_type}&src=${tempFilePaths}`
+    });
+  },
 
   showModal1: function (e) {
     var hideModal1 = !!+e.currentTarget.dataset.index, that = this, animation;

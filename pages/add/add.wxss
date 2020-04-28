@@ -80,3 +80,7 @@
 .weui-cells:after {
   border: none;
 }
+
+.weui-cell_access .weui-cell__ft:after {
+  margin-top: -11px;
+}

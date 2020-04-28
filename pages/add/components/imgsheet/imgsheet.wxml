@@ -1,5 +1,5 @@
-<view class="page">
-  <view wx:if="{{showDialog}}" class="fadeIn" data-index="0" bindtap="close">
+<view class="page"  wx:if="{{showDialog}}">
+  <view class="fadeIn" data-index="0" bindtap="close">
     <view class="weui-mask"></view>
     <view class="weui-actionsheet weui-actionsheet_toggle">
       <view class="weui-actionsheet__menu">

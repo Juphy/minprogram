@@ -8,10 +8,10 @@
   padding-bottom: 180rpx;
 }
 
-.one-image image {
+/* .one-image image {
   width: 100%;
   vertical-align: top;
-}
+} */
 
 .one-text {
   background-color: #fff;
@@ -148,7 +148,7 @@
   flex-direction: row;
 }
 
-.img-switch view {
+/* .img-switch view {
   border: 2rpx solid #dfdfdf;
   padding: 0 20rpx;
   line-height: 50rpx;
@@ -164,7 +164,7 @@
 .img-switch view.switch-case {
   background-color: #1dcb72;
   color: #fff;
-}
+} */
 
 .img-btn {
   position: absolute;
@@ -360,6 +360,11 @@
   opacity: 0.6;
 }
 
+
+
+
+
+
 .we-image {
   position: relative;
 }
@@ -439,4 +444,17 @@
 
 form input {
   text-align: right !important;
+}
+
+.weui-cells_form .weui-cell__ft {
+  font-size: inherit;
+}
+
+.weui-cell_access .weui-cell__ft{
+  padding-right: 16px;
+
+}
+
+.weui-cell_access .weui-cell__ft:after {
+  margin-top: -11px;
 }

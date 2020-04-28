@@ -4,7 +4,8 @@ Component({
     },
     properties: {
         showDialog: {
-            type: Boolean
+            type: Boolean,
+            value: false
         }
     },
     // 组件初始数据

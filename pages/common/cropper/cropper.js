@@ -27,9 +27,11 @@ Page({
 		} = options;
 		this.setData({
 			image_source: Number(image_source),
-		});
-		this.setData({
 			image_type: Number(image_type),
+			src: src
+		});
+		wx.showLoading({
+			title: "加载中",
 		});
 		wx.getImageInfo({
 			src,
@@ -49,15 +51,18 @@ Page({
 						width,
 					});
 				}
-			},
+				that.cropper = that.selectComponent("#image-cropper");
+			}
 		});
-		this.cropper = this.selectComponent("#image-cropper");
-		this.setData({
-			src: src,
-		});
-		wx.showLoading({
-			title: "加载中",
-		});
+	},
+
+	cropperload(e) {
+		console.log("cropper加载完成");
+	},
+
+	loadimage(e) {
+		wx.hideLoading();
+		this.cropper.imgReset();
 	},
 
 	changeRatio: function (e) {
@@ -90,27 +95,22 @@ Page({
 		}
 	},
 
-	cropperload(e) {
-		console.log("cropper加载完成");
-	},
-
-	loadimage(e) {
-		wx.hideLoading();
-		this.cropper.imgReset();
-	},
-
 	clickcut(e) {
 		wx.previewImage({
-			current: e.detail.url,
-			urls: [e.detail.url],
+			current: e.detail.url, // 当前显示图片的http
+			urls: [e.detail.url]  // 需要预览的图片http链接列表
 		});
 	},
 
-	cancel() { },
+	cancel() {
+		wx.navigateBack({
+			delta: 1
+		})
+	},
 
 	submit() {
 		wx.showLoading({
-			title: "正在上传",
+			title: "正在上传"
 		});
 		this.cropper.getImg((obj) => {
 			wx.uploadFile({
@@ -122,68 +122,111 @@ Page({
 				},
 				success(res) {
 					wx.hideLoading();
-					console.log(res);
+					let data = JSON.parse(res.data);
+					let pages = getCurrentPages();
+					let prepage = pages[pages.length - 2];
+					let index = prepage.data.index, prizes = prepage.data.prizes;
+					prizes[index]['image'] = data.result;
+					prepage.setData({ prizes });
+					console.log(prizes);
+					wx.navigateBack({
+						delta: 1
+					})
 				},
 			});
 		});
 	},
 
-	upload() {
-		let that = this;
-		wx.chooseImage({
-			count: 1,
-			sizeType: ["original", "compressed"],
-			sourceType: ["album", "camera"],
+	handleImg(res) {
+		wx.showLoading({
+			title: "加载中",
+		});
+		const tempFilePaths = res.tempFiles[0];
+		wx.getImageInfo({
+			src: tempFilePaths,
 			success(res) {
-				wx.showLoading({
-					title: "加载中",
-				});
-				const tempFilePaths = res.tempFilePaths[0];
-				wx.getImageInfo({
+				let flag = res.height > res.width;
+				if (flag) {
+					let height = that.data.width / 2;
+					that.setData({
+						height
+					});
+				} else {
+					let width = that.data.height / 2;
+					that.setData({
+						width
+					});
+				}
+				that.cropper.imgReset();
+				that.setData({
+					flag,
 					src: tempFilePaths,
-					success(res) {
-						let flag = res.height > res.width;
-						that.setData({
-							flag,
-						});
-						if (flag) {
-							let height = that.data.width / 2;
-							that.setData({
-								height,
-							});
-						} else {
-							let width = that.data.height / 2;
-							that.setData({
-								width,
-							});
-						}
-						that.cropper.imgReset();
-						that.setData({
-							src: tempFilePaths,
-						});
-					},
 				});
 			},
 		});
+	},
+
+	upload() {
+		let that = this;
+		let index = this.data.image_source;
+		switch (index) {
+			case 0:
+				wx.chooseImage({
+					count: 1,
+					sizeType: ["original", "compressed"],
+					sourceType: ["album", "camera"],
+					success(res) {
+						this.handleImg(res);
+					},
+				});
+				break;
+			case 1:
+				wx.chooseMessageFile({
+					count: 1,
+					type: 'image',
+					success(res) {
+
+						this.handleImg(res);
+					}
+				})
+				break;
+		}
 	},
 	setHeigt(e) {
 		let width = this.data.width;
 		this.setData({
 			height: width / 2,
 		});
+		this.setData({
+			cut_top: this.cropper.data.cut_top
+		});
 	},
 	top() {
 		this.data.top = setInterval(() => {
 			this.cropper.setTransform({
-				y: -1,
+				y: -3,
 			});
-		}, 1000 / 60);
+		}, 10);
 	},
 	bottom() {
 		this.data.bottom = setInterval(() => {
 			this.cropper.setTransform({
-				y: 1,
+				y: 3,
 			});
-		}, 1000 / 60);
+		}, 10);
+	},
+	left() {
+		this.data.left = setInterval(() => {
+			this.cropper.setTransform({
+				x: -3
+			});
+		}, 10)
+	},
+	right() {
+		this.data.right = setInterval(() => {
+			this.cropper.setTransform({
+				x: 3
+			});
+		}, 10)
 	},
 });

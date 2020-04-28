@@ -5,6 +5,7 @@
   right: 0;
   border-top: 2rpx solid #dfdfdf;
   background-color: #fff;
+  z-index: 999;
 }
 
 .btns-container view {
