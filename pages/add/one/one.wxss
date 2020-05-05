@@ -13,7 +13,7 @@
   vertical-align: top;
 } */
 
-.one-text {
+/* .one-text {
   background-color: #fff;
 }
 
@@ -70,9 +70,9 @@
 
 .btn button:after {
   border-radius: 0;
-}
+} */
 
-.one-desc {
+/* .one-desc {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -86,7 +86,7 @@
 
 .one-desc text + text {
   color: #4493d6;
-}
+} */
 
 .one-textarea {
   background-color: #fff;
@@ -360,10 +360,12 @@
   opacity: 0.6;
 }
 
-
-
-
-
+/*
+*
+*
+*
+*
+*/
 
 .we-image {
   position: relative;
@@ -450,11 +452,123 @@ form input {
   font-size: inherit;
 }
 
-.weui-cell_access .weui-cell__ft{
+.weui-cell_access .weui-cell__ft {
   padding-right: 16px;
-
 }
 
 .weui-cell_access .weui-cell__ft:after {
-  margin-top: -11px;
+  margin-top: -13px;
+}
+
+.hb-label {
+  display: inline-block;
+  background-color: #dead61;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 48rpx;
+  width: 48rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.hb-desc {
+  display: inline-block;
+  color: #dead61;
+  line-height: 48rpx;
+  font-size: 30rpx;
+}
+.one-reduce {
+  display: inline-block;
+  font-size: 20rpx;
+  padding-left: 14rpx;
+  padding-right: 14rpx;
+  width: 48rpx;
+  line-height: 46rpx;
+  height: 48rpx;
+  box-sizing: border-box;
+  border-radius: 48rpx;
+  color: #fff;
+  background-color: #e9564f;
+  margin-left: -6rpx;
+  margin-right: 6rpx;
+  vertical-align: middle;
+}
+.weui-cells:after {
+  border: none;
+}
+
+.one-btn {
+  line-height: 80rpx;
+  background-color: #fff;
+}
+
+.one-btn button {
+  color: #4493d6;
+}
+
+.one-desc {
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+
+.one-desc text {
+  text-align: right;
+  color: var(--weui-FG-1);
+}
+
+.one-textarea {
+  padding: 24rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  min-height: 200rpx;
+  height: auto;
+  display: inline-block;
+}
+
+.border-radius {
+  border-radius: 6rpx;
+}
+
+.one-date input {
+  width: 96rpx;
+  margin-right: 16rpx;
+  text-align: right;
+}
+
+.one-date {
+  display: flex;
+  padding: 24rpx;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 44rpx;
+  background-color: #fff;
+}
+
+.one-date view + view {
+  display: flex;
+  height: 44rpx;
+  line-height: 44rpx;
+  color: #999;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.one-date image {
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 6rpx;
+}
+
+editor {
+  min-height: 240rpx;
+  height: auto;
+  width: 100%;
+  background-color: #fff;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.promote-cell:before{
+  border: none;
 }

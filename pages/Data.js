@@ -12,12 +12,12 @@ const ReceiveTypes = [
 ];
 
 const PromoteTypes = {
-  1: { value: 1, img: '../../../image/addbox.png', color: '#666666' },
-  2: { value: 2, img: '../../../image/wechat.png', color: '#1DCB72' },
-  3: { value: 3, img: '../../../image/person.png', color: '#60A2FF' },
-  4: { value: 4, img: '../../../image/persons.png', color: '#00BAFF' },
-  5: { value: 5, img: '../../../image/link.png', color: '#7B7EFF' },
-  6: { value: 6, img: '../../../image/dot.png', color: '#FFB911' }
+  1: { value: 1, img: '../../../../image/addbox.png', color: '#666666' },
+  2: { value: 2, img: '../../../../image/wechat.png', color: '#1DCB72' },
+  3: { value: 3, img: '../../../../image/person.png', color: '#60A2FF' },
+  4: { value: 4, img: '../../../../image/persons.png', color: '#00BAFF' },
+  5: { value: 5, img: '../../../../image/link.png', color: '#7B7EFF' },
+  6: { value: 6, img: '../../../../image/dot.png', color: '#FFB911' }
 };
 
 const PromotesType = [
@@ -42,7 +42,7 @@ const TypeText = {
     num: '奖品数量', _num: '数量',
   },
   2: {
-    name: '总金额', _name: '请输入总金额',
+    name: '总金额', _name1: '请输入总金额', _name2: '请输入金额',
     num: '红包个数', _num: '数量',
   }
 };

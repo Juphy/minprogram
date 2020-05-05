@@ -1,0 +1,32 @@
+.chaptcha-container {
+  height: 100%;
+  background-color: #f0f0f0;
+  padding: 20rpx;
+}
+
+.chaptcha-title {
+  border: 2rpx solid #e1d7be;
+  padding: 24rpx;
+  background-color: #fffaf4;
+  border-radius: 5rpx;
+  font-size: 28rpx;
+}
+
+.chaptcha-text {
+  line-height: 64rpx;
+  font-size: 26rpx;
+}
+
+input {
+  height: 2.4rem;
+  background-color: #fff;
+  padding: 0 24rpx;
+}
+
+button {
+  margin-top: 24rpx;
+  padding: 0;
+  border-radius: 46rpx;
+  border-radius: 46rpx;
+  box-sizing: border-box;
+}

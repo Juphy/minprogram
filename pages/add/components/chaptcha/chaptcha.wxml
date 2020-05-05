@@ -1,0 +1,10 @@
+<view class="chaptcha-container">
+  <view class="chaptcha-title">
+    设置口令后，用户需联系你获取口令才可参与抽奖。
+  </view>
+  <view class="chaptcha-text">
+    设置口令
+  </view>
+  <input type="text" value="{{chaptcha}}" bindinput="bindchaptcha" placeholder="请输入抽奖口令"/>
+  <button type="warn" bindtap="bindTap">保存</button>  
+</view>

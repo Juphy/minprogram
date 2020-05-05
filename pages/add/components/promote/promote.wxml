@@ -8,7 +8,7 @@
 	  </view>
 	  <view class="promote-name">{{item.promote_name}}</view>
 	  <view class="promote-edit" data-index="{{item.id}}" catchtap="editPromote">
-	    <image src="../../../image/edit.png"></image>
+	    <image src="../../../../image/edit.png"></image>
 	  </view>
 	</view>
 	</block>

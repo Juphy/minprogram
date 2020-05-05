@@ -14,7 +14,11 @@ const ActivityList = HOST + '/home/activity_list',
   // 发起人信息类型
   PromoteTypes = HOST + "/user/promote_types",
   // 上传图片
-  UploadImg = HOST + "/ucs/upload_img";
+  UploadImg = HOST + "/ucs/upload_img",
+  //  活动类型列表
+  ActivityTypeList = HOST + '/activity/type_list',
+  //  发布活动
+  ActivityCreateByUser = HOST + '/activity/create_by_user';
 
 // get请求方法
 let fetchGet = function (url, callback) {
@@ -57,6 +61,8 @@ module.exports = {
   PromoteInfo,
   PromoteTypes,
   UploadImg,
+  ActivityTypeList,
+  ActivityCreateByUser,
 
   // METHOD
   fetchGet,

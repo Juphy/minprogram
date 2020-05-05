@@ -82,5 +82,5 @@
 }
 
 .weui-cell_access .weui-cell__ft:after {
-  margin-top: -11px;
+  margin-top: -13px;
 }

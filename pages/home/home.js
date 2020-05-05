@@ -42,8 +42,8 @@ Page({
 		});
 		var that = this;
 		var data = {
-			page: that.data.page,
-			pagesize: that.data.pagesize,
+			// page: that.data.page,
+			// pagesize: that.data.pagesize,
 		};
 		Api.fetchPost(Api.ActivityList, data, (err, res) => {
 			wx.hideLoading();

@@ -9,7 +9,9 @@
     "pages/add/components/promote/promote",
     "pages/add/components/promote/edit/edit",
     "pages/add/components/receive/receive",
-    "pages/common/description/description",
+    "pages/add/components/description/description",
+    "pages/add/components/introduce/introduce",
+    "pages/add/components/chaptcha/chaptcha",
     "pages/common/cropper/cropper"
   ],
   "window": {

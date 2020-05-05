@@ -1,0 +1,11 @@
+<view class="desc-container  weui-cell__bd">
+  <editor id="editor-textarea" bindinput="bindTextAreaInput" value="{{describe}}" placeholder="请输入本次抽奖活动的说明"></editor>
+  <!-- <textarea wx:if="{{!describe}}" bindblur="bindTextAreaInput" bindfocus='bindTextAreaFocus' class="weui-textarea one-textarea border-radius" placeholder="请输入本次抽奖活动的说明" value="{{describe}}"></textarea>
+  <textarea wx:if="{{describe}}" bindblur="bindTextAreaInput" bindfocus='bindTextAreaFocus' class="weui-textarea one-textarea border-radius" placeholder="请输入本次抽奖活动的说明" auto-height="{{auto_height}}" value="{{describe}}"></textarea> -->
+  <!-- <textarea class="weui-textarea one-textarea border-radius" bindinput="bindTextAreaInput" placeholder="请输入本次抽奖活动的说明" value="{{describe}}"></textarea> -->
+  <!-- <view class="weui-textarea-counter counter-text">
+    <text>0</text>
+    /200
+  </view> -->
+  <button type="warn" bindtap="bindTap">保存</button>
+</view>

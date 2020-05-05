@@ -1,0 +1,19 @@
+<view class="desc-container">
+  <editor id="editor-textarea" bindinput="bindTextAreaInput" value="{{describe}}" placeholder="请输入本次抽奖的图文介绍"></editor>
+  <view class="weui-uploader__bd" style="background-color: #fff;padding-left: 24rpx;margin: 0;padding-top:24rpx">
+    <view class="weui-uploader__files" id="uploaderFiles">
+      <block wx:for="{{files}}" wx:key="*this">
+        <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}" style="position: relative; margin-right: 10px;padding: .18em .4em;">
+          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+          <text class="weui-badge" style="position: absolute; top: -0.4em; right: -0.4em;" bindtap="reduceFile" data-index="{{index}}">×</text>
+        </view>
+      </block>
+    </view>
+    <view class="weui-uploader__input-box">
+      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+    </view>
+  </view>
+  <view>
+    <button type="warn" bindtap="bindTap">保存</button>
+  </view>
+</view>
