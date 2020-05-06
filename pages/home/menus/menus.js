@@ -37,10 +37,14 @@ Component({
     methods: {
         selectMenu(e) {
             let index = +e.currentTarget.dataset.index;
+            console.log(e);
             switch (index) {
                 case 0:
                     break;
                 case 1:
+                    wx.navigateTo({
+                        url: '../exchange-mall/exchange-mall'
+                    });
                     break;
                 case 2:
                     break;

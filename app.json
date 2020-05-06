@@ -12,7 +12,10 @@
     "pages/add/components/description/description",
     "pages/add/components/introduce/introduce",
     "pages/add/components/chaptcha/chaptcha",
-    "pages/common/cropper/cropper"
+    "pages/common/cropper/cropper",
+    "pages/exchange-mall/exchange-mall",
+    "pages/exchange-mall/detail/detail",
+    "pages/exchange-mall/list/list"
   ],
   "window": {
     "backgroundColor": "#EA5750",
