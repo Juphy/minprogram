@@ -6,7 +6,6 @@ Page({
     navList: [],
     goodsList: [],
     id: 0,
-    currentGroup: {},
     scrollLeft: 0,
     scrollTop: 0,
     scrollHeight: 0,
@@ -42,21 +41,13 @@ Page({
     let that = this;
     api.fetchGet(api.GroupList,
       (err, wxInfo) => {
-        for (const current of wxInfo.result) {
-          if (that.data.id === current.id) {
-            that.setData({
-              currentGroup: current
-            });
-            break;
-          }
-        }
-        if (!that.data.currentGroup.id) {
+        if (!that.data.id) {
           that.setData({
-            currentGroup: wxInfo.result[0]
+            id: 0
           });
         }
         that.setData({
-          navList: wxInfo.result
+          navList: [{id: 0, name: '全部商品'}, ...wxInfo.result],
         });
 
         //nav位置
@@ -99,8 +90,11 @@ Page({
     if (that.data.nomore) {
       return;
     }
-
-    api.fetchPost(api.GetGoodsList, {group_id: that.data.currentGroup.id, page: that.data.page, pagesize: that.data.size},
+    const data = {page: that.data.page, pagesize: that.data.size};
+    if (that.data.id) {
+      data['group_id'] = that.data.id;
+    }
+    api.fetchPost(api.GetGoodsList, data,
       (err, wxInfo) => {
         wxInfo.result.data.forEach(item => {
           item.images = JSON.parse(item.images);
@@ -140,6 +134,6 @@ Page({
       nomore: false
     });
     
-    this.getGroupInfo();
+    this.getGoodsList();
   }
 })
