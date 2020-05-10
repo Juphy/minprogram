@@ -1,66 +1,145 @@
-// pages/exchange-mall.js
+var api = require('../../utils/api.js');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    // text:"这是一个页面"
+    navList: [],
+    goodsList: [],
+    id: 0,
+    currentGroup: {},
+    scrollLeft: 0,
+    scrollTop: 0,
+    scrollHeight: 0,
+    page: 1,
+    size: 10,
+    loadmoreText: '正在加载更多数据',
+    nomoreText: '全部加载完成',
+    nomore: false,
+    // totalPages: 1
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    // 页面初始化 options为页面跳转所带来的参数
+    var that = this;
+    // if (options.id) { // 目前不会传过来id
+    //   that.setData({
+    //     id: parseInt(options.id)
+    //   });
+    // }
+
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          scrollHeight: res.windowHeight
+        });
+      }
+    });
+
+
+    this.getGroupInfo();
 
   },
+  getGroupInfo: function () {
+    let that = this;
+    api.fetchGet(api.GroupList,
+      (err, wxInfo) => {
+        for (const current of wxInfo.result) {
+          if (that.data.id === current.id) {
+            that.setData({
+              currentGroup: current
+            });
+            break;
+          }
+        }
+        if (!that.data.currentGroup.id) {
+          that.setData({
+            currentGroup: wxInfo.result[0]
+          });
+        }
+        that.setData({
+          navList: wxInfo.result
+        });
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+        //nav位置
+        let currentIndex = 0;
+        let navListCount = that.data.navList.length;
+        for (let i = 0; i < navListCount; i++) {
+          currentIndex += 1;
+          if (that.data.navList[i].id == that.data.id) {
+            break;
+          }
+        }
+        if (currentIndex > navListCount / 2 && navListCount > 5) {
+          that.setData({
+            scrollLeft: currentIndex * 60
+          });
+        }
+        that.getGoodsList();
+      });
+  },
   onReady: function () {
-
+    // 页面渲染完成
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    // 页面显示
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
-
+    // 页面隐藏
   },
 
   /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+     * 页面上拉触底事件的处理函数
+     */
   onReachBottom: function () {
-
+    this.getGoodsList()
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  getGoodsList: function () {
+    var that = this;
 
+    if (that.data.nomore) {
+      return;
+    }
+
+    api.fetchPost(api.GetGoodsList, {group_id: that.data.currentGroup.id, page: that.data.page, pagesize: that.data.size},
+      (err, wxInfo) => {
+        wxInfo.result.data.forEach(item => {
+          item.images = JSON.parse(item.images);
+        });
+        that.setData({
+          goodsList: that.data.goodsList.concat(wxInfo.result.data),        
+          page: wxInfo.result.pageinfo.current_page+1,
+          // totalPages: wxInfo.result.pageinfo.total / wxInfo.result.pageinfo.per_page
+          nomore: !wxInfo.result.pageinfo.has_more_pages
+        });
+      });
+  },
+  onUnload: function () {
+    // 页面关闭
+  },
+  switchCate: function (event) {
+    if (this.data.id == event.currentTarget.dataset.id) {
+      return false;
+    }
+    var that = this;
+    var clientX = event.detail.x;
+    var currentTarget = event.currentTarget;
+    if (clientX < 60) {
+      that.setData({
+        scrollLeft: currentTarget.offsetLeft - 60
+      });
+    } else if (clientX > 330) {
+      that.setData({
+        scrollLeft: currentTarget.offsetLeft
+      });
+    }
+    this.setData({
+      id: event.currentTarget.dataset.id,
+      page:1,
+      // totalPages: 1,
+      goodsList: [],
+      nomore: false
+    });
+    
+    this.getGroupInfo();
   }
 })

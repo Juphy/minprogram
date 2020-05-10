@@ -18,8 +18,15 @@ const ActivityList = HOST + '/home/activity_list',
   //  活动类型列表
   ActivityTypeList = HOST + '/activity/type_list',
   //  发布活动
-  ActivityCreateByUser = HOST + '/activity/create_by_user';
-
+  ActivityCreateByUser = HOST + '/activity/create_by_user',
+  // 获取商品列表
+  GetGoodsList = HOST + '/home/goods_list',
+  CategoryList = HOST + '/home/goods_categorys',
+  GroupList = HOST + '/home/goods_groups',
+  // 获取商品spu详情（商品详情)
+  GetGoodsSpuInfo = HOST + '/goods/spu_info',
+  // 获取商品sku属性列表
+  GetGoodsSpuSkus = HOST + '/goods/spu_skus';
 // get请求方法
 let fetchGet = function (url, callback) {
   wx.request({
@@ -63,6 +70,11 @@ module.exports = {
   UploadImg,
   ActivityTypeList,
   ActivityCreateByUser,
+  GetGoodsList,
+  CategoryList,
+  GroupList,
+  GetGoodsSpuInfo,
+  GetGoodsSpuSkus,
 
   // METHOD
   fetchGet,
