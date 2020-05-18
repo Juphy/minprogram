@@ -1,66 +1,137 @@
-// pages/brand/edit/edit.js
+const Util = require('../../../../../utils/util.js');
+const Api = require('../../../../../utils/api.js');
+const Data = require("../../../../Data.js");
+const Promotes = Data.PromotesType;
+const Promote = Data.Promotes;
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    state: 0,
+    promote1: {
+      promote_type: 1,
+      promote_name: '',
+      promote_guide: '',
+      id: null
+    },
+    promote2: {
+      promote_type: 2,
+      promote_name: '',
+      promote_guide: '',
+      promote_img: '',
+      id: null
+    },
+    Promotes: [],
+    Promote: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({ Promotes });
+    this.setData({ Promote });
+    let id = options.id;
+    if (id) {
+      this.getPromoteInfo({ id }, promote => {
+        if (promote.promote_type === 1) {
+          let promote1 = this.data.promote1;
+          for (let key in promote1) {
+            promote1[key] = promote[key];
+          }
+          this.setData({ promote1 })
+        } else {
+          let promote2 = this.data.promote2;
+          for (let key in promote2) {
+            promote2[key] = promote[key];
+          }
+          this.setData({ promote2 })
+        }
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getPromoteInfo(data, callback) {
+    Api.fetchPost(Api.PromoteInfo, data, (err, res) => {
+      if (res.status === 200) {
+        callback(res.result);
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  bindSwitch: function (e) {
+    var state = +e.currentTarget.dataset.index;
+    this.setData({ state });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  bindInput: function (e) {
+    let i = +e.currentTarget.dataset.index,
+      value = e.detail.value;
+    switch (this.data.state) {
+      case 0:
+        let promote1 = this.data.promote1;
+        switch (i) {
+          case 0:
+            promote1.promote_name = value;
+            break;
+          case 1:
+            promote1.promote_guide = value;
+            break;
+        }
+        this.setData({ promote1 });
+        break;
+      case 1:
+        break;
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  bindSelect: function (e) {
+    var promote_type = +e.currentTarget.dataset.index;
+    let promote2 = this.data.promote2;
+    promote2['promote_type'] = promote_type;
+    this.setData({ promote2 });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  editPromote: function () {
+    switch (this.data.state) {
+      case 0:
+        let promote1 = this.data.promote1;
+        if (!promote1.promote_name) {
+          wx.showToast({
+            title: '复制内容不能为空',
+            icon: 'none',
+            duration: 1500
+          });
+          return;
+        }
+        if (!promote1.promote_guide) {
+          wx.showToast({
+            title: '请输入引导用户复制的文案',
+            icon: 'none',
+            duration: 1500
+          });
+          return;
+        }
+        let data = {
+          promote_type: promote1.promote_type,
+          promote_name: promote1.promote_name,
+          promote_guide: promote1.promote_guide
+        };
+        if (promote1.id) {
+          data['id'] = promote1.id;
+        }
+        Api.fetchPost(Api.EditPromote, data, (err, res) => {
+          if (res.status === 200) {
+            wx.navigateBack({
+              delta: 1
+            })
+          } else {
+            wx.showToast({
+              title: res.error,
+              duration: 1500,
+              icon: 'none',
+            });
+          }
+        })
+        break;
+      case 1:
+        break;
+    }
   }
 })

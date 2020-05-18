@@ -11,17 +11,17 @@
 }
 
 .brand-title {
-  margin: 40rpx 0;
+  margin: 80rpx 0 40rpx 0;
   font-weight: 500;
 }
 
 .brand-gray {
   color: #7e7e7e;
   text-align: left;
-  padding: 60rpx;
+  padding: 60rpx 60rpx 0 60rpx;
 }
 .brand-info {
-  padding: 60rpx;
+  padding: 0 60rpx 60rpx 60rpx;
   text-align: left;
 }
 
@@ -37,6 +37,9 @@
   width: 60%;
   color: #fff;
   background-color: #f66;
+}
+.brand-img-card {
+  text-align: center;
 }
 .brand-img {
   border-radius: 40rpx;

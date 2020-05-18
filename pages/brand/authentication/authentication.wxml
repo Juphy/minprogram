@@ -2,8 +2,8 @@
 <view class="brand-wai">
 	<view class="brand-nei">
 		<view class="brand-title">
-			<view class="brand-img">
-				<image src="../../../image/wan_vip.png"></image>
+			<view class="brand-img-card">
+				<image class="brand-img" src="../../../image/wan_vip.png"></image>
 			</view>
 			<text>品牌认证</text>
 		</view>
