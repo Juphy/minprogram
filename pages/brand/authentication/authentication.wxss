@@ -1,0 +1,17 @@
+/* pages/brand/authentication/authentication.wxss */
+.brand-wai {
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.brand-nei {
+  border: 1rpx solid #555;
+  padding: 10rpx;
+  text-align: center;
+  vertical-align: middle;
+}
+.brand-gray {
+  color: #7e7e7e;
+}
+.brand-info {
+  padding: 10px;
+}

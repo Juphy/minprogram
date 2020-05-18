@@ -26,7 +26,15 @@ const ActivityList = HOST + '/home/activity_list',
   // 获取商品spu详情（商品详情)
   GetGoodsSpuInfo = HOST + '/goods/spu_info',
   // 获取商品sku属性列表
-  GetGoodsSpuSkus = HOST + '/goods/spu_skus';
+  GetGoodsSpuSkus = HOST + '/goods/spu_skus',
+
+  // 获取品牌信息， 如果没有品牌信息则跳到品牌认证页
+  GetShopInfo = HOST + '/shop/info',
+  // 编辑品牌信息（商铺）
+  editShop = HOST + '/shop/edit',
+  // 删除品牌（商铺）
+  deleteShop = HOST + '/brand/del';
+
 // get请求方法
 let fetchGet = function (url, callback) {
   wx.request({
@@ -75,7 +83,9 @@ module.exports = {
   GroupList,
   GetGoodsSpuInfo,
   GetGoodsSpuSkus,
-
+  GetShopInfo,
+  editShop,
+  deleteShop,
   // METHOD
   fetchGet,
   fetchPost

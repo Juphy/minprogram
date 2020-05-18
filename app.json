@@ -15,7 +15,10 @@
     "pages/common/cropper/cropper",
     "pages/exchange-mall/exchange-mall",
     "pages/exchange-mall/detail/detail",
-    "pages/exchange-mall/list/list"
+    "pages/exchange-mall/list/list",
+    "pages/brand/authentication/authentication",
+    "pages/brand/edit/edit",
+    "pages/brand/pagehome/pagehome"
   ],
   "window": {
     "backgroundColor": "#EA5750",
