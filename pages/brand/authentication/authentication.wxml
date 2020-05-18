@@ -1,7 +1,12 @@
 <!--pages/brand/authentication/authentication.wxml-->
 <view class="brand-wai">
 	<view class="brand-nei">
-		<text>品牌认证</text>
+		<view class="brand-title">
+			<view class="brand-img">
+				<image src="../../../image/wan_vip.png"></image>
+			</view>
+			<text>品牌认证</text>
+		</view>
 
 		<view class="brand-info">
 			<text>开通后，你将拥有属于自己的个人专属抽奖品牌主页，可以展示你的品牌、商品等信息。同时你可为主页生成永久有效的抽奖二维码，方便活动宣传。</text>
@@ -12,7 +17,7 @@
 		</view>
 
 		<navigator url="/pages/brand/edit/edit">
-			免费开通
+			<view class="brand-button">免费开通</view>
 		</navigator>
 	</view>
 </view>

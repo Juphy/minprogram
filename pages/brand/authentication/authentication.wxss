@@ -9,9 +9,41 @@
   text-align: center;
   vertical-align: middle;
 }
+
+.brand-title {
+  margin: 40rpx 0;
+  font-weight: 500;
+}
+
 .brand-gray {
   color: #7e7e7e;
+  text-align: left;
+  padding: 60rpx;
 }
 .brand-info {
-  padding: 10px;
+  padding: 60rpx;
+  text-align: left;
+}
+
+.brand-button {
+  display: inline-block;
+	position: relative;
+	margin: 80rpx 20rpx;
+	padding: 20rpx 40rpx;
+	text-align: center;
+	text-decoration: none;
+  font: bold 28rpx/36rpx Arial, sans-serif;
+  border-radius: 60rpx;
+  width: 60%;
+  color: #fff;
+  background-color: #f66;
+}
+.brand-img {
+  border-radius: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx;
+  font-size: 0;
+  background-color: #1D95EC;
+  text-align: center;
 }
