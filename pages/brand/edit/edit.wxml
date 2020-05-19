@@ -1,6 +1,14 @@
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="page__bd">
+        <view class="weui-cell__bd">品牌Logo</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+            <image class="brand-img" src="../../../image/wan_vip.png"></image>
+        </view>
+        <view class="weui-cell__bd">品牌名称</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+        请输入品牌名称
+        </view>
         <navigator url="/pages/add/components/promote/promote" class="weui-cell weui-cell_access promote-cell" hover-class="weui-cell_active" style="margin-top: 1px;padding: 8px 16px;background-color: #fff;">
           <view class="weui-cell__bd">发起人信息</view>
           <view class="weui-cell__ft weui-cell__ft_in-access">

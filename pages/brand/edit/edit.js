@@ -1,6 +1,6 @@
-const Util = require('../../../../../utils/util.js');
-const Api = require('../../../../../utils/api.js');
-const Data = require("../../../../Data.js");
+const Util = require('../../../utils/util');
+const Api = require('../../../utils/api.js');
+const Data = require("../../Data.js");
 const Promotes = Data.PromotesType;
 const Promote = Data.Promotes;
 

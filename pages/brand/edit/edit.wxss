@@ -12,3 +12,12 @@
   color: #fff;
   background-color: #f66;
 }
+
+.brand-img {
+  border-radius: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx;
+  font-size: 0;
+  background-color: rgb(170, 170, 170);
+}
