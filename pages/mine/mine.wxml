@@ -75,7 +75,7 @@
       <navigator url="" class="weui-footer__link">
         <button class="button">免责说明</button>
       </navigator>
-      <navigator url="" class="weui-footer__link">
+      <navigator url="/pages/feedback/feedback" class="weui-footer__link">
         <button class="button">我要投诉</button>
       </navigator>
   </view>

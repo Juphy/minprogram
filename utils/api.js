@@ -33,7 +33,10 @@ const ActivityList = HOST + '/home/activity_list',
   // 编辑品牌信息（商铺）
   editShop = HOST + '/shop/edit',
   // 删除品牌（商铺）
-  deleteShop = HOST + '/brand/del';
+  deleteShop = HOST + '/brand/del',
+
+  // 我要投诉
+  addFeedback = HOST + '/user/add_feedback';
 
 // get请求方法
 let fetchGet = function (url, callback) {
@@ -86,6 +89,7 @@ module.exports = {
   GetShopInfo,
   editShop,
   deleteShop,
+  addFeedback,
   // METHOD
   fetchGet,
   fetchPost

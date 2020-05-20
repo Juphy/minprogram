@@ -18,7 +18,8 @@
     "pages/exchange-mall/list/list",
     "pages/brand/authentication/authentication",
     "pages/brand/edit/edit",
-    "pages/brand/pagehome/pagehome"
+    "pages/brand/pagehome/pagehome",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundColor": "#EA5750",
