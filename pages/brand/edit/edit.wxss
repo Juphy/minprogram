@@ -14,10 +14,20 @@
 }
 
 .brand-img {
-  border-radius: 40rpx;
-  width: 40rpx;
-  height: 40rpx;
-  padding: 20rpx;
+  border-radius: 60rpx;
+  width: 60rpx;
+  height: 60rpx;
+  padding: 10rpx;
   font-size: 0;
   background-color: rgb(170, 170, 170);
+}
+
+.form-card {
+  margin-top: 1px;
+  padding: 8px 16px;
+  background-color: #fff;
+}
+.form-label {
+  display: inline-block;
+  width: 200rpx
 }

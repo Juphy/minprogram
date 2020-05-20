@@ -81,7 +81,7 @@
     <textarea wx:if="{{!describe}}" disabled read-only="true" bindtap="bindTextareaTap" class="weui-textarea one-textarea border-radius" placeholder="请输入本次抽奖活动的说明" value="{{describe}}"></textarea>
     <editor wx:if="{{describe}}" id="describe-text" read-only="true" style="height: auto;min-height:100px" value="{{describe}}" bindtap="bindTextareaTap"></editor>
     <navigator url="/pages/add/components/promote/promote" class="weui-cell weui-cell_access promote-cell" hover-class="weui-cell_active" style="margin-top: 1px;padding: 8px 16px;background-color: #fff;">
-      <view class="weui-cell__bd">发起人信息</view>
+      <view class="weui-cell__bd">发起人信息</view>b
       <view class="weui-cell__ft weui-cell__ft_in-access">
         {{promote.id?promote.promote_name:'微信号或公众号等'}}
       </view>
