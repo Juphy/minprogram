@@ -75,10 +75,9 @@ Page({
       }
     });
     api.fetchPost(api.addFeedback, { contact: that.data.contact, type: that.data.array[that.data.index].value, content: that.data.content}, function (err, res) {
-      if (res.errno === 0) {
-
+      console.log(res);
+      if (res.status === 200) {
         wx.hideLoading();
-
         wx.showToast({
           title: res.data,
           icon: 'success',
@@ -95,13 +94,19 @@ Page({
       } else {
         // util.showErrorToast(res.data);
         wx.showToast({
-          title: res.data,
+          title: res.error,
           icon: 'none',
           duration: 1500
         });
       }
       
     });
+  },
+  bindTextAreaInput: function (e) {
+    var content = e.detail.delta;
+    // let pages = getCurrentPages();
+    // var prepage = pages[pages.length - 2], describe = e.detail.html;
+    this.setData({ content });
   },
   onLoad: function (options) {
     let that = this;

@@ -10,8 +10,9 @@
     </view>
   </picker>
   <view class="fb-body">
-    <textarea class="content" placeholder="请详细描述问题以便我们尽快处理"  bindinput ="contentInput" maxlength="500" auto-focus="true" value="{{content}}"/>
-    <view class="text-count">{{contentLength}}/500</view>
+    <!-- <textarea class="content" placeholder="请详细描述问题以便我们尽快处理"  bindinput ="contentInput" maxlength="500" auto-focus="true" value="{{content}}"/>
+    <view class="text-count">{{contentLength}}/500</view> -->
+    <editor id="editor-textarea" bindinput="bindTextAreaInput" value="{{content}}" placeholder="请详细描述问题以便我们尽快处理"></editor>
   </view>
   <view class="fb-contact">
     <view class="label">联系方式</view>
