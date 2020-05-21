@@ -89,6 +89,9 @@ Page({
               contentLength: 0,
               contact: ''
             });
+            wx.navigateBack({
+              delta: 1
+            })
           }
         });
       } else {
