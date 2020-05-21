@@ -34,7 +34,8 @@ const ActivityList = HOST + '/home/activity_list',
   editShop = HOST + '/shop/edit',
   // 删除品牌（商铺）
   deleteShop = HOST + '/brand/del',
-
+  // 获取options
+  sysOptions = HOST + '/home/sys_options',
   // 我要投诉
   addFeedback = HOST + '/user/add_feedback';
 
@@ -89,6 +90,7 @@ module.exports = {
   GetShopInfo,
   editShop,
   deleteShop,
+  sysOptions,
   addFeedback,
   // METHOD
   fetchGet,

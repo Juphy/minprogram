@@ -7,7 +7,7 @@ var app = getApp();
 
 Page({
   data: {
-    array: ['请选择投诉类型', '虚假抽奖', '恶意营销', '伪冒侵权', '政治敏感', '诱导分享', '商品相关', '物流状况', '功能异常', '其他'],
+    array: [],
     index: 0,
     content:'',
     contentLength:0,
@@ -74,7 +74,7 @@ Page({
 
       }
     });
-    api.fetchPost(api.addFeedback, { contact: that.data.contact, type: that.data.array[that.data.index], content: that.data.content}, function (res) {
+    api.fetchPost(api.addFeedback, { contact: that.data.contact, type: that.data.array[that.data.index].value, content: that.data.content}, function (err, res) {
       if (res.errno === 0) {
 
         wx.hideLoading();
@@ -104,6 +104,12 @@ Page({
     });
   },
   onLoad: function (options) {
+    let that = this;
+    api.fetchPost(api.sysOptions, {type: 'feedback'}, function (err, res) {
+      that.setData({
+        array : res.result ? [{name: '请选择投诉类型', type: 0}, ...res.result] : []
+      });
+    });
   },
   onReady: function () {
 

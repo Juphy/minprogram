@@ -1,11 +1,11 @@
 <view class="container">
 
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+  <picker bindchange="bindPickerChange" value="{{index}}" range-key="name" range="{{array}}">
     <view class="picker">
       <view class="fb-type">
-        <view class="type-label">{{array[index]}}</view>
-        <image class="type-icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png"></image>
-
+        <view class="type-label">{{array[index].name}}</view>
+        <!-- <image class="type-icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png"></image> -->
+        <view class="i weui-icon-arrow"></view>
       </view>
     </view>
   </picker>

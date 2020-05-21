@@ -19,7 +19,7 @@
     </view>
     <view class="section-nav section-attr" bindtap="switchAttrPop">
       <view class="t">请选择规格数量</view>
-       <view class="i weui-icon-arrow"></view>
+      <view class="i weui-icon-arrow"></view>
     </view>
 
     <view class="detail">
