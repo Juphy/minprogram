@@ -24,7 +24,7 @@ const ActivityList = HOST + '/home/activity_list',
   CategoryList = HOST + '/home/goods_categorys',
   GroupList = HOST + '/home/goods_groups',
   // 获取商品spu详情（商品详情)
-  GetGoodsSpuInfo = HOST + '/goods/spu_info',
+  GetGoodsSpuInfo = HOST + '/goods/info',
   // 获取商品sku属性列表
   GetGoodsSpuSkus = HOST + '/goods/spu_skus',
 
