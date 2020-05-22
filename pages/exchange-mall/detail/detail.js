@@ -18,7 +18,19 @@ Page({
         wxInfo.result.images = JSON.parse(wxInfo.result.images);
         that.setData({
           goods: wxInfo.result,
-          specificationList: [{name: '测试'}],
+          specificationList: wxInfo.result.specs.map(spec => {
+            return {
+              spec_name: spec.spec_name,
+              spec_id: spec.spec_id,
+              spec_values: Object.keys(spec.spec_values).map(key => {
+                return {
+                  id: key,
+                  name: spec.spec_values[key],
+                  checked: false
+                }
+              })
+            }
+          }),
           productList: wxInfo.productList,
         });
           //设置默认值
@@ -28,6 +40,7 @@ Page({
   },
 
   clickSkuValue: function (event) {
+    console.log(event.currentTarget.dataset);
     let that = this;
     let specNameId = event.currentTarget.dataset.nameId;
     let specValueId = event.currentTarget.dataset.valueId;
@@ -37,17 +50,17 @@ Page({
     //TODO 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
     let _specificationList = this.data.specificationList;
     for (let i = 0; i < _specificationList.length; i++) {
-      if (_specificationList[i].specification_id == specNameId) {
-        for (let j = 0; j < _specificationList[i].valueList.length; j++) {
-          if (_specificationList[i].valueList[j].id == specValueId) {
+      if (_specificationList[i].spec_id == specNameId) {
+        for (let j = 0; j < _specificationList[i].spec_values.length; j++) {
+          if (_specificationList[i].spec_values[j].id == specValueId) {
             //如果已经选中，则反选
-            if (_specificationList[i].valueList[j].checked) {
-              _specificationList[i].valueList[j].checked = false;
+            if (_specificationList[i].spec_values[j].checked) {
+              _specificationList[i].spec_values[j].checked = false;
             } else {
-              _specificationList[i].valueList[j].checked = true;
+              _specificationList[i].spec_values[j].checked = true;
             }
           } else {
-            _specificationList[i].valueList[j].checked = false;
+            _specificationList[i].spec_values[j].checked = false;
           }
         }
       }
@@ -67,14 +80,14 @@ Page({
     let _specificationList = this.data.specificationList;
     for (let i = 0; i < _specificationList.length; i++) {
       let _checkedObj = {
-        nameId: _specificationList[i].specification_id,
+        nameId: _specificationList[i].spec_id,
         valueId: 0,
         valueText: ''
       };
-      for (let j = 0; j < _specificationList[i].valueList.length; j++) {
-        if (_specificationList[i].valueList[j].checked) {
-          _checkedObj.valueId = _specificationList[i].valueList[j].id;
-          _checkedObj.valueText = _specificationList[i].valueList[j].value;
+      for (let j = 0; j < _specificationList[i].spec_values.length; j++) {
+        if (_specificationList[i].spec_values[j].checked) {
+          _checkedObj.valueId = _specificationList[i].spec_values[j].id;
+          _checkedObj.valueText = _specificationList[i].spec_values[j].value;
         }
       }
       checkedValues.push(_checkedObj);
@@ -128,7 +141,7 @@ Page({
   },
   getCheckedProductItem: function (key) {
     return this.data.productList.filter(function (v) {
-      if (v.goods_specification_ids.indexOf(key) > -1) {
+      if (v.goods_spec_ids.indexOf(key) > -1) {
         return true;
       } else {
         return false;
@@ -251,10 +264,10 @@ Page({
         if (!specificationList)return;
         for (let i = 0; i < specificationList.length;i++){
             let specification = specificationList[i];
-            let specNameId = specification.specification_id;
+            let specNameId = specification.spec_id;
             //规格只有一个时自动选择规格
-            if (specification.valueList && specification.valueList.length == 1){
-                let specValueId = specification.valueList[0].id;
+            if (specification.spec_values && specification.spec_values.length == 1){
+                let specValueId = specification.spec_values[0].id;
                 that.clickSkuValue({ currentTarget: { dataset: { "nameId": specNameId, "valueId": specValueId } } });
             }
         }
