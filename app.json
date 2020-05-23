@@ -19,7 +19,13 @@
     "pages/brand/authentication/authentication",
     "pages/brand/edit/edit",
     "pages/brand/pagehome/pagehome",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/exchange-mall/address/address",
+    "pages/exchange-mall/addressAdd/addressAdd",
+    "pages/exchange-mall/checkout/checkout",
+    "pages/exchange-mall/selCoupon/selCoupon",
+    "pages/exchange-mall/payResult/payResult",
+    "pages/exchange-mall/pay/pay"
   ],
   "window": {
     "backgroundColor": "#EA5750",

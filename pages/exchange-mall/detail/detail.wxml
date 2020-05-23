@@ -43,12 +43,14 @@
       <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.spec_id}}">
         <view class="name">{{item.spec_name}}</view>
         <view class="values">
-          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.spec_values}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.spec_id}}">{{vitem.name}}</view>
+          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.spec_values}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{item.spec_id}}">{{vitem.name}}</view>
         </view>
       </view>
 
       <view class="number-item">
-        <view class="name">数量</view>
+        <view class="name">数量 
+          <view class="stock" wx:if="{{checkedProduct&&checkedProduct.stock}}"> 【库存：{{checkedProduct.stock}}】</view>
+        </view>
         <view class="selnum">
           <view class="cut" bindtap="cutNumber">-</view>
           <input value="{{number}}" class="number" disabled="true" type="number" />
@@ -61,5 +63,5 @@
 </scroll-view>
 
 <view class="bottom-btn">
-  <view class="c" bindtap='buyGoods'>立即购买</view>
+  <view class="c {{checkedProduct && number < checkedProduct.stock ? 'able' : ''}}" bindtap='buyGoods'>立即购买</view>
 </view>

@@ -61,6 +61,7 @@
       font-size: 41rpx;
       line-height: 41rpx;
   }
+
   
   .goods-info .desc{
       height: 43rpx;
@@ -580,6 +581,10 @@
       border-top: 1px solid #f4f4f4;
       border-bottom: 1px solid #f4f4f4;
   }
+  .bottom-btn .able {
+      background-color:  #b4282d;
+      color: #fff;
+  }
   
   .bottom-btn .r{
       border:1px solid #b4282d;
@@ -648,6 +653,13 @@
       margin-bottom: 22rpx;
       font-size: 29rpx;
       color: #333;
+  }
+
+  .spec-con .name .stock {
+    color: #5f5f5f;
+    font-size: 36rppx;
+    display: inline-block;
+    margin: 0 12rpx;
   }
   
   .spec-con .values{

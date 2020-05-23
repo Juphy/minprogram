@@ -37,8 +37,16 @@ const ActivityList = HOST + '/home/activity_list',
   // 获取options
   sysOptions = HOST + '/home/sys_options',
   // 我要投诉
-  addFeedback = HOST + '/user/add_feedback';
-
+  addFeedback = HOST + '/user/add_feedback',
+  // 地址
+  AddressDetail = HOST + '/xxx/AddressDetail',
+  RegionList = HOST + '/xxx/RegionList',
+  AddressSave = HOST + '/xxx/AddressSave',
+  OrderSubmit = HOST + '/xxx/OrderSubmit',
+   // 支付
+  PayPrepayId = HOST + '/xxx/PayPrepayId',
+  OrderQuery = HOST + '/xxx/OrderQuery',
+  GoodsCouponList = HOST + '/xxx/GoodsCouponList';
 // get请求方法
 let fetchGet = function (url, callback) {
   wx.request({
@@ -92,6 +100,13 @@ module.exports = {
   deleteShop,
   sysOptions,
   addFeedback,
+  PayPrepayId,
+  AddressDetail,
+  RegionList,
+  AddressSave,
+  OrderSubmit,
+  OrderQuery,
+  GoodsCouponList,
   // METHOD
   fetchGet,
   fetchPost
