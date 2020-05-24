@@ -2,6 +2,7 @@
   "navigationBarTitleText": "一起拼手气",
   "usingComponents": {
     "we-header": "header/header",
-    "we-menu": "menus/menus"
+    "we-menu": "menus/menus",
+    "we-lista": "lista/lista"
   }
 }

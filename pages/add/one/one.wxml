@@ -63,7 +63,7 @@
           <view class="weui-cell__hd" style="padding-left: 12rpx" wx:if="{{item.type===1}}">份</view>
           <view class="weui-cell__hd" style="padding-left: 12rpx" wx:if="{{item.type===2}}">个</view>
         </view>
-        <navigator wx:if="{{item.type===1}}" url="/pages/add/components/receive/receive?index={{index}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <navigator wx:if="{{item.type===1}}" url="/pages/add/components/receive/receive?index={{index}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-index="{{index}}" bindtap="bindIndex">
           <view class="weui-cell__bd">奖品发放方式</view>
           <view class="weui-cell__ft weui-cell__ft_in-access">{{item._receive_type}}</view>
         </navigator>
@@ -78,7 +78,9 @@
       <label class="weui-form-preview__label">抽奖说明</label>
       <text class="weui-form-preview__value">选填</text>
     </view>
-    <textarea wx:if="{{!describe}}" disabled read-only="true" bindtap="bindTextareaTap" class="weui-textarea one-textarea border-radius" placeholder="请输入本次抽奖活动的说明" value="{{describe}}"></textarea>
+    <view wx:if="{{!describe}}" bindtap="bindTextareaTap" class="weui-textarea one-textarea border-radius">
+      请输入本次抽奖活动的说明
+    </view>
     <editor wx:if="{{describe}}" id="describe-text" read-only="true" style="height: auto;min-height:100px" value="{{describe}}" bindtap="bindTextareaTap"></editor>
     <navigator url="/pages/add/components/promote/promote" class="weui-cell weui-cell_access promote-cell" hover-class="weui-cell_active" style="margin-top: 1px;padding: 8px 16px;background-color: #fff;">
       <view class="weui-cell__bd">发起人信息</view>
@@ -91,18 +93,21 @@
       <label class="weui-form-preview__label" wx:if="{{draw_mode===1}}">定时开奖</label>
       <label class="weui-form-preview__label" wx:if="{{draw_mode===2}}">手动开奖</label>
       <label class="weui-form-preview__label" wx:if="{{draw_mode===3}}">满人开奖</label>
-      <text class="weui-form-preview__value" style="color: #4493d6;white-space: nowrap" data-index="0" bindtap="showModal1">修改开奖方式></text>
+      <view class="weui-form-preview__value" style="color: #4493d6;white-space: nowrap;text-align: right;" data-index="0" bindtap="showModal1">
+        修改开奖方式
+        <i class="weui-icon-arrow" style="color: #4493d6;height: 12px"></i>
+      </view>
     </view>
     <view class='one-date'>
       <block wx:if="{{draw_mode===1}}">
         <view>开奖时间</view>
         <picker mode="multiSelector" value="{{multiIndex}}" bindchange="bindMultiPickerChange" range="{{multiArray}}">
-          <view class="picker"  style="color: #999" wx:if="{{multiIndex}}">
+          <view class="picker" style="color: #999" wx:if="{{multiIndex}}">
             {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}
           </view>
-          <view class="picker"  style="color: #999" wx:if="{{!multiIndex}}">
+          <view class="picker" style="color: #999" wx:if="{{!multiIndex}}">
             请选择开奖时间
-            <image src="../../../image/arrow.png"></image>
+            <i class="weui-icon-arrow" style="height: 12px"></i>
           </view>
         </picker>
       </block>
@@ -120,10 +125,10 @@
     </view>
     <view class="one-date">
       <view>抽奖类型</view>
-      <picker data-index="0" bindchange="bindPickerChange" value="{{type}}" range="{{typelist}}"  bindchange="bndType">
+      <picker data-index="0" bindchange="bindPickerChange" value="{{type}}" range="{{typelist}}" bindchange="bndType">
         <view class="picker" style="color: #999">
           {{typelist[type]}}
-          <image src="../../../image/arrow.png"></image>
+          <i class="weui-icon-arrow" style="height: 12px"></i>
         </view>
       </picker>
     </view>

@@ -227,6 +227,11 @@ Page({
     })
   },
 
+  bindIndex: function (e) {
+    var index = +e.currentTarget.dataset.index;
+    this.setData({ index });
+  },
+
   formSubmit: function (e) {
 
   },
