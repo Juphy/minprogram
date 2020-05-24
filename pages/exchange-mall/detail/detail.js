@@ -7,9 +7,10 @@ Page({
     gallery: [],
     specificationList: [], // 规格列表
     productList: [], // 选择了的规格
-    number: 1, // 库存
+    number: 1, // 库存, 购买数量
     checkedSpecText: '请选择规格数量',
     openAttr: false,
+    checkedProduct: null
   },
   getGoodsInfo: function () {
     let that = this;
@@ -18,7 +19,19 @@ Page({
         wxInfo.result.images = JSON.parse(wxInfo.result.images);
         that.setData({
           goods: wxInfo.result,
-          specificationList: [{name: '测试'}],
+          specificationList: wxInfo.result.specs.map(spec => {
+            return {
+              spec_name: spec.spec_name,
+              spec_id: spec.spec_id,
+              spec_values: Object.keys(spec.spec_values).map(key => {
+                return {
+                  id: Number(key),
+                  name: spec.spec_values[key],
+                  checked: false
+                }
+              })
+            }
+          }),
           productList: wxInfo.productList,
         });
           //设置默认值
@@ -28,6 +41,7 @@ Page({
   },
 
   clickSkuValue: function (event) {
+    console.log(event.currentTarget.dataset);
     let that = this;
     let specNameId = event.currentTarget.dataset.nameId;
     let specValueId = event.currentTarget.dataset.valueId;
@@ -37,17 +51,17 @@ Page({
     //TODO 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
     let _specificationList = this.data.specificationList;
     for (let i = 0; i < _specificationList.length; i++) {
-      if (_specificationList[i].specification_id == specNameId) {
-        for (let j = 0; j < _specificationList[i].valueList.length; j++) {
-          if (_specificationList[i].valueList[j].id == specValueId) {
+      if (_specificationList[i].spec_id == specNameId) {
+        for (let j = 0; j < _specificationList[i].spec_values.length; j++) {
+          if (_specificationList[i].spec_values[j].id == specValueId) {
             //如果已经选中，则反选
-            if (_specificationList[i].valueList[j].checked) {
-              _specificationList[i].valueList[j].checked = false;
+            if (_specificationList[i].spec_values[j].checked) {
+              _specificationList[i].spec_values[j].checked = false;
             } else {
-              _specificationList[i].valueList[j].checked = true;
+              _specificationList[i].spec_values[j].checked = true;
             }
           } else {
-            _specificationList[i].valueList[j].checked = false;
+            _specificationList[i].spec_values[j].checked = false;
           }
         }
       }
@@ -59,6 +73,25 @@ Page({
     this.changeSpecInfo();
 
     //重新计算哪些值不可以点击
+    this.getCheckedProductItem();
+  },
+
+  // 重新计算哪些值不可以点击
+  getCheckedProductItem: function (params) {
+    const checkedSpec = this.getCheckedSpecValue().map(item => item.valueId ? this.data.goods.spec_value_skus[item.valueId] : []);
+    console.log(checkedSpec); 
+    let intersection = checkedSpec.shift() || [];
+    console.log(intersection);
+    // let intersection = arr1.filter(function (val) { return arr2.indexOf(val) > -1 })
+
+    for (const s of checkedSpec) {
+      intersection = intersection.filter((val) => s.indexOf(val) > -1)
+    }
+    console.log(intersection);
+    this.setData({
+      checkedProduct: intersection.length ? this.data.goods.skus[intersection[0]] : null
+    });
+    console.log(this.data.checkedProduct);
   },
 
   //获取选中的规格信息
@@ -67,14 +100,14 @@ Page({
     let _specificationList = this.data.specificationList;
     for (let i = 0; i < _specificationList.length; i++) {
       let _checkedObj = {
-        nameId: _specificationList[i].specification_id,
+        nameId: _specificationList[i].spec_id,
         valueId: 0,
         valueText: ''
       };
-      for (let j = 0; j < _specificationList[i].valueList.length; j++) {
-        if (_specificationList[i].valueList[j].checked) {
-          _checkedObj.valueId = _specificationList[i].valueList[j].id;
-          _checkedObj.valueText = _specificationList[i].valueList[j].value;
+      for (let j = 0; j < _specificationList[i].spec_values.length; j++) {
+        if (_specificationList[i].spec_values[j].checked) {
+          _checkedObj.valueId = _specificationList[i].spec_values[j].id;
+          _checkedObj.valueText = _specificationList[i].spec_values[j].value;
         }
       }
       checkedValues.push(_checkedObj);
@@ -126,15 +159,15 @@ Page({
     }
 
   },
-  getCheckedProductItem: function (key) {
-    return this.data.productList.filter(function (v) {
-      if (v.goods_specification_ids.indexOf(key) > -1) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-  },
+  // getCheckedProductItem: function (key) {
+  //   return this.data.productList.filter(function (v) {
+  //     if (v.goods_spec_ids.indexOf(key) > -1) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  // },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
@@ -199,20 +232,21 @@ Page({
       }
 
       //根据选中的规格，判断是否有对应的sku信息
-      let checkedProduct = this.getCheckedProductItem(this.getCheckedSpecKey());
-      if (!checkedProduct || checkedProduct.length <= 0) {
+      // let checkedProduct = this.getCheckedProductItem(this.getCheckedSpecKey());
+      // let checkedProduct = this.getCheckedProductItem();
+      if (!this.data.checkedProduct) { //  || checkedProduct.length <= 0
         //找不到对应的product信息，提示没有库存
         return false;
       }
 
       //验证库存
-      if (checkedProduct.goods_number < this.data.number) {
+      if (this.data.checkedProduct.stock < this.data.number) {
         //找不到对应的product信息，提示没有库存
         return false;
       }
 
       // 直接购买商品
-      api.fetchPost(api.BuyAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: checkedProduct[0].id }, "POST",'application/json')
+      api.fetchPost(api.BuyAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: this.data.checkedProduct.id }, "POST",'application/json')
         .then(function (res) {
           let _res = res;
           if (_res.errno == 0) {
@@ -251,10 +285,10 @@ Page({
         if (!specificationList)return;
         for (let i = 0; i < specificationList.length;i++){
             let specification = specificationList[i];
-            let specNameId = specification.specification_id;
+            let specNameId = specification.spec_id;
             //规格只有一个时自动选择规格
-            if (specification.valueList && specification.valueList.length == 1){
-                let specValueId = specification.valueList[0].id;
+            if (specification.spec_values && specification.spec_values.length == 1){
+                let specValueId = specification.spec_values[0].id;
                 that.clickSkuValue({ currentTarget: { dataset: { "nameId": specNameId, "valueId": specValueId } } });
             }
         }

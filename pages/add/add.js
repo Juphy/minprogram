@@ -1,3 +1,5 @@
+var api = require('../../utils/api')
+
 Page({
   data: {
     lotteryTypes: [
@@ -33,10 +35,10 @@ Page({
     ],
     menuList: [
       { name: '首页推广', img: '../../image/copyto.png', color: '#00C590' },
-      { name: '品牌主页', img: '../../image/brand.png', color: '#4B83FA' },
+      { name: '品牌主页', img: '../../image/brand.png', color: '#4B83FA', url: '/pages/brand/pagehome/pagehome' },
       { name: '意见反馈', img: '../../image/ask.png', color: '#8A5DFE' },
       { name: '我要咨询', img: '../../image/warning.png', color: '#1E86F9' }
-    ]
+    ],
   },
 
   onClickList: function (e) {
@@ -48,5 +50,25 @@ Page({
           url: "/pages/add/one/one"
         });
     }
-  }
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    let that = this;
+    // 验证是否有品牌录入
+    console.log(this.menuList);
+    api.fetchGet(api.GetShopInfo, (err, wxInfo) => {
+      // 判断是否有品牌， 没有的话，设置需要认证
+      console.log('shopInfo', wxInfo, wxInfo.status);
+      if (wxInfo.status === 400) {
+        const menuList  = [...that.data.menuList];
+        menuList[1].url = '/pages/brand/authentication/authentication'
+        that.setData({
+          menuList 
+        })
+      }
+    });
+  },
 })

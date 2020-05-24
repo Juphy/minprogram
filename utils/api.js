@@ -21,12 +21,32 @@ const ActivityList = HOST + '/home/activity_list',
   ActivityCreateByUser = HOST + '/activity/create_by_user',
   // 获取商品列表
   GetGoodsList = HOST + '/home/goods_list',
-  CategoryList = HOST + '/home/goods_categorys',
+  CategoryList = HOST + '/home/goods_categorys', 
   GroupList = HOST + '/home/goods_groups',
   // 获取商品spu详情（商品详情)
-  GetGoodsSpuInfo = HOST + '/goods/spu_info',
+  GetGoodsSpuInfo = HOST + '/goods/info',
   // 获取商品sku属性列表
-  GetGoodsSpuSkus = HOST + '/goods/spu_skus';
+  GetGoodsSpuSkus = HOST + '/goods/spu_skus',
+
+  // 获取品牌信息， 如果没有品牌信息则跳到品牌认证页
+  GetShopInfo = HOST + '/shop/info',
+  // 编辑品牌信息（商铺）
+  editShop = HOST + '/shop/edit',
+  // 删除品牌（商铺）
+  deleteShop = HOST + '/brand/del',
+  // 获取options
+  sysOptions = HOST + '/home/sys_options',
+  // 我要投诉
+  addFeedback = HOST + '/user/add_feedback',
+  // 地址
+  AddressDetail = HOST + '/xxx/AddressDetail',
+  RegionList = HOST + '/xxx/RegionList',
+  AddressSave = HOST + '/xxx/AddressSave',
+  OrderSubmit = HOST + '/xxx/OrderSubmit',
+   // 支付
+  PayPrepayId = HOST + '/xxx/PayPrepayId',
+  OrderQuery = HOST + '/xxx/OrderQuery',
+  GoodsCouponList = HOST + '/xxx/GoodsCouponList';
 // get请求方法
 let fetchGet = function (url, callback) {
   wx.request({
@@ -75,7 +95,18 @@ module.exports = {
   GroupList,
   GetGoodsSpuInfo,
   GetGoodsSpuSkus,
-
+  GetShopInfo,
+  editShop,
+  deleteShop,
+  sysOptions,
+  addFeedback,
+  PayPrepayId,
+  AddressDetail,
+  RegionList,
+  AddressSave,
+  OrderSubmit,
+  OrderQuery,
+  GoodsCouponList,
   // METHOD
   fetchGet,
   fetchPost

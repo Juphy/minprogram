@@ -1,0 +1,28 @@
+<view class="container">
+
+  <picker bindchange="bindPickerChange" value="{{index}}" range-key="name" range="{{array}}">
+    <view class="picker">
+      <view class="fb-type">
+        <view class="type-label">{{array[index].name}}</view>
+        <!-- <image class="type-icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png"></image> -->
+        <view class="i weui-icon-arrow"></view>
+      </view>
+    </view>
+  </picker>
+  <view class="fb-body">
+    <!-- <textarea class="content" placeholder="请详细描述问题以便我们尽快处理"  bindinput ="contentInput" maxlength="500" auto-focus="true" value="{{content}}"/>
+    <view class="text-count">{{contentLength}}/500</view> -->
+    <editor id="editor-textarea" bindinput="bindTextAreaInput" value="{{content}}" placeholder="请详细描述问题以便我们尽快处理"></editor>
+  </view>
+  <view class="fb-contact">
+    <view class="label">联系方式</view>
+    <view class="contact-box">
+      <input class="contact" maxlength="11" type="number" placeholder="请输入微信号或者手机号" bindinput ="contactInput" value="{{contact}}"/>
+      <!--
+      <image class="clear-icon" src="https://platform-wxmall.oss-cn-beijing.aliyuncs.com/upload/20180727/150647657fcdd0.png" bindtap="cleanMobile"></image>
+      -->
+    </view>
+  </view>
+
+  <view class="fb-btn" bindtap="sbmitFeedback">提交</view>
+</view>

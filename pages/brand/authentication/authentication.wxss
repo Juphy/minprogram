@@ -1,0 +1,52 @@
+/* pages/brand/authentication/authentication.wxss */
+.brand-wai {
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.brand-nei {
+  border: 1rpx solid #555;
+  padding: 10rpx;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.brand-title {
+  margin: 80rpx 0 40rpx 0;
+  font-weight: 500;
+}
+
+.brand-gray {
+  color: #7e7e7e;
+  text-align: left;
+  padding: 60rpx 60rpx 0 60rpx;
+}
+.brand-info {
+  padding: 0 60rpx 60rpx 60rpx;
+  text-align: left;
+}
+
+.brand-button {
+  display: inline-block;
+	position: relative;
+	margin: 80rpx 20rpx;
+	padding: 20rpx 40rpx;
+	text-align: center;
+	text-decoration: none;
+  font: bold 28rpx/36rpx Arial, sans-serif;
+  border-radius: 60rpx;
+  width: 60%;
+  color: #fff;
+  background-color: #f66;
+}
+.brand-img-card {
+  text-align: center;
+}
+.brand-img {
+  border-radius: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx;
+  font-size: 0;
+  background-color: #1D95EC;
+  text-align: center;
+}
