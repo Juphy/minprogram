@@ -39,9 +39,11 @@ const ActivityList = HOST + '/home/activity_list',
   // 我要投诉
   addFeedback = HOST + '/user/add_feedback',
   // 地址
+  AddressList = HOST + '/user/address_list',
   AddressDetail = HOST + '/xxx/AddressDetail',
   RegionList = HOST + '/xxx/RegionList',
-  AddressSave = HOST + '/xxx/AddressSave',
+  AddressSave = HOST + '/user/add_address',
+  AddressDelete = HOST + '/user/del_address',
   OrderSubmit = HOST + '/xxx/OrderSubmit',
    // 支付
   PayPrepayId = HOST + '/xxx/PayPrepayId',
@@ -103,7 +105,9 @@ module.exports = {
   PayPrepayId,
   AddressDetail,
   RegionList,
+  AddressList,
   AddressSave,
+  AddressDelete,
   OrderSubmit,
   OrderQuery,
   GoodsCouponList,

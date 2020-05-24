@@ -118,12 +118,12 @@ Page({
 
   },
   onLoad: function (options) {
-    // 页面初始化 options为页面跳转所带来的参数
+    // 如果修改。页面初始化 options为页面跳转所带来的参数
     if (options.id != '' && options.id != 0) {
       this.setData({
         addressId: options.id
       });
-      this.getAddressDetail();
+      // this.getAddressDetail();
     }
 
     this.getRegionList(1);

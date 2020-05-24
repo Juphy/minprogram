@@ -31,7 +31,7 @@ Page({
     });
   },
   selectAddress(event){
-
+    // 这里要改成传具体地址，因为如果改了地址，发货地址就变了
     try {
       wx.setStorageSync('addressId', event.currentTarget.dataset.addressId);
     } catch (e) {
@@ -41,6 +41,13 @@ Page({
     //选择该收货地址
     wx.navigateBack({
       url: '/pages/exchange-mall/checkout/checkout'
+    });
+  },
+  deleteAddress(id) {
+    api.fetchPost(api.AddressDelete, {id}, (res) => {
+      if (res.errno === 0) {
+        this.getAddressList()
+      }
     });
   },
   onHide: function () {
