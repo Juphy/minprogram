@@ -79,7 +79,7 @@ Page({
       if (res.status === 200) {
         wx.hideLoading();
         wx.showToast({
-          title: res.data,
+          title: '成功',
           icon: 'success',
           duration: 2000,
           complete: function () {
@@ -95,9 +95,8 @@ Page({
           }
         });
       } else {
-        // util.showErrorToast(res.data);
         wx.showToast({
-          title: res.error,
+          title: err,
           icon: 'none',
           duration: 1500
         });

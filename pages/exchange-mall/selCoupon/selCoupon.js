@@ -13,10 +13,10 @@ Page({
 
   loadListData: function () {
     let that = this;
-    api.fetchPost(api.GoodsCouponList, { type: this.data.buyType }, function (res) {
-      if (res.errno === 0) {
+    api.fetchPost(api.GoodsCouponList, { type: this.data.buyType }, function (err, res) {
+      if (res.status === 200) {
         that.setData({
-          couponList: res.data
+          couponList: res.result
         });
       }
     });

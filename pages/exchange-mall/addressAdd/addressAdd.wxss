@@ -18,6 +18,23 @@ page{
   padding-right: 31.25rpx;
 }
 
+.add-address .form-textarea {
+  padding: 0 16rpx;
+  margin-top: 16rpx;
+}
+
+.add-address .textarea {
+  padding: 16rpx;
+  flex: 1;
+  line-height: 44rpx;
+  min-height: 300rpx;
+  height: auto;
+  display: inline-block;
+  border: 1px dashed transparent;
+  background: linear-gradient(white,white) padding-box,
+  repeating-linear-gradient(-45deg,#ccc 0, #ccc 0.25em,white 0,white 0.75em);
+}
+
 .add-address .input{
   flex: 1;
   height: 44rpx;
@@ -92,7 +109,7 @@ bottom: 0;
 
 .region-select .hd{
 height: 108rpx;
-width: 100%;
+/* width: 100%; */
 border-bottom: 1px solid #f4f4f4;
 padding: 46rpx 30rpx 0 30rpx;
 }

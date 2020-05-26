@@ -246,10 +246,9 @@ Page({
       }
 
       // 直接购买商品
-      api.fetchPost(api.BuyAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: this.data.checkedProduct.id }, "POST",'application/json')
-        .then(function (res) {
+      api.fetchPost(api.BuyAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: this.data.checkedProduct.id }, function (err, res) {
           let _res = res;
-          if (_res.errno == 0) {
+          if (res.status === 200) {
             that.setData({
               openAttr: !that.data.openAttr,
             });

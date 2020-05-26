@@ -17,10 +17,11 @@ Page({
   },
   getAddressList (){
     let that = this;
-    api.fetchGet(api.AddressList, function (res) {
-      if (res.errno === 0) {
+    api.fetchGet(api.AddressList, function (err, res) {
+      console.log(res)
+      if (res.status === 200) {
         that.setData({
-          addressList: res.data
+          addressList: res.result
         });
       }
     });
@@ -44,8 +45,8 @@ Page({
     });
   },
   deleteAddress(id) {
-    api.fetchPost(api.AddressDelete, {id}, (res) => {
-      if (res.errno === 0) {
+    api.fetchPost(api.AddressDelete, {id}, (err, res) => {
+      if (res.status === 200) {
         this.getAddressList()
       }
     });

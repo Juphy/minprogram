@@ -29,9 +29,9 @@ Page({
   //向服务请求支付参数
   requestPayParam() {
     let that = this;
-    api.fetchPost(api.PayPrepayId, { orderId: that.data.orderId, payType: 1 }, function (res) {
-      if (res.errno === 0) {
-        let payParam = res.data;
+    api.fetchPost(api.PayPrepayId, { orderId: that.data.orderId, payType: 1 }, function (err, res) {
+      if (res.status === 200) {
+        let payParam = res.result;
         wx.requestPayment({
           'timeStamp': payParam.timeStamp,
           'nonceStr': payParam.timeStamp,
