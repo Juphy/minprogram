@@ -66,6 +66,11 @@ Page({
       address: address
     });
   },
+  bindCnAddress(event) {
+    this.setData({
+      cnAddress: event.detail.value
+    });
+  },
   bindIsDefault() {
     let address = this.data.address;
     address.is_default = !address.is_default;
@@ -106,7 +111,7 @@ Page({
 
     //设置区域选择数据
     let address = this.data.address;
-    if (address.province_code && address.city_code && address.district_code) {
+    if (address.province_code && address.city_code && address.district_code && address.zhen_code) {
       let selectRegionList = this.data.selectRegionList;
       selectRegionList[0].code = address.province_code;
       selectRegionList[0].name = address.province_name;
@@ -128,8 +133,7 @@ Page({
         selectRegionList: selectRegionList,
         regionType: 3
       });
-
-      this.getRegionList(address.city_code);
+      // this.getRegionList(address.city_code);
     } else {
       this.setData({
         selectRegionList: [{
@@ -159,7 +163,8 @@ Page({
         ],
         regionType: 0
       })
-      this.getRegionList(1);
+      console.log('chooseRegion')
+      this.getRegionList(undefined);
     }
 
     this.setRegionDoneStatus();
@@ -174,7 +179,7 @@ Page({
       // this.getAddressDetail();
     }
 
-    this.getRegionList();
+    // this.getRegionList();
 
   },
   onReady: function () {
@@ -296,20 +301,21 @@ Page({
     api.fetchPost(api.RegionList, {
       code: regionId
     }, function (err, res) {
+      console.log(res);
       if (res.status === 200) {
         that.setData({
           regionList: res.result.map(item => {
-
             //标记已选择的
             if (regionType == item.ssxz && that.data.selectRegionList[regionType].code == item.code) {
               item.selected = true;
             } else {
               item.selected = false;
             }
-
+            item.name = item.post_name
             return item;
           })
         });
+        console.log(that.data.regionList, regionType);
       }
     });
   },
@@ -363,17 +369,19 @@ Page({
     }
     let that = this;
     api.fetchPost(api.AddressSave, {
-      code: address.code,
-      userName: address.userName,
-      telNumber: address.telNumber,
-      province_code: address.province_code,
-      city_code: address.city_code,
-      district_code: address.district_code,
-      is_default: address.is_default,
-      provinceName: address.province_name,
-      cityName: address.city_name,
-      countyName: address.district_name,
-      detailInfo: address.detailInfo,
+      // code: address.code,
+      receiver_name: address.userName,
+      receiver_phone: address.telNumber,
+      address_info: {
+        province_code: address.province_code,
+        city_code: address.city_code,
+        district_code: address.district_code,
+        is_default: address.is_default,
+        provinceName: address.province_name,
+        cityName: address.city_name,
+        countyName: address.district_name,
+        detailInfo: address.detailInfo,
+      }
     }, function (err2, res2) {
       if (res2.status === 200) {
         wx.navigateBack({
@@ -400,7 +408,29 @@ Page({
       'address_array': [this.data.cnAddress]
     }, (err, res) => {
       if (res.status === 200) {
-
+        let cnAddress = res.result;
+        let selectRegionList = this.data.selectRegionList;
+        selectRegionList[0].code = cnAddress.sheng;
+        selectRegionList[0].name = cnAddress.sheng_s;
+        selectRegionList[0].parent_code = undefined;
+  
+        selectRegionList[1].code = cnAddress.shi;
+        selectRegionList[1].name = cnAddress.shi_s;
+        selectRegionList[1].parent_code = cnAddress.sheng;
+  
+        selectRegionList[2].code = cnAddress.xian;
+        selectRegionList[2].name = cnAddress.xian_S;
+        selectRegionList[2].parent_code = cnAddress.shi;
+  
+        selectRegionList[3].code = cnAddress.zhen;
+        selectRegionList[3].name = cnAddress.zhen_s;
+        selectRegionList[3].parent_code = cnAddress.xian;
+  
+        this.setData({
+          selectRegionList: selectRegionList,
+          regionType: 3
+        });
+        this.doneSelectRegion();
       }
     })
   },

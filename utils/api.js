@@ -43,7 +43,7 @@ const ActivityList = HOST + '/home/activity_list',
   AddressDetail = HOST + '/xxx/AddressDetail',
   RegionList = HOST + '/home/get_children_diqus',
   GetAddressObj = HOST + '/home/get_location_ex',
-  AddressSave = HOST + '/user/add_address',
+  AddressSave = HOST + '/user/edit_address',
   AddressDelete = HOST + '/user/del_address',
   OrderSubmit = HOST + '/xxx/OrderSubmit',
    // 支付

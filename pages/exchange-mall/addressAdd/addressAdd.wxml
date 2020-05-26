@@ -13,7 +13,7 @@
 			<input class="input" bindinput="bindinputAddress" value="{{address.detailInfo}}" placeholder="详细地址, 如街道、楼盘号等" />
 		</view>
 		<view class="form-textarea">
-			<textarea class="weui-textarea textarea" placeholder="输入详细地址，自动匹配识别" value="{{cnAddress}}"></textarea>
+			<textarea class="weui-textarea textarea" placeholder="输入详细地址，自动匹配识别" value="{{cnAddress}}" bindinput="bindCnAddress"></textarea>
       <button type="primary" plain="true" bindtap="checkoutAddress">识别</button>
 		</view>
 		<!-- <view class="form-default">
@@ -29,13 +29,13 @@
 	<view class="region-select" wx:if="{{openSelectRegion}}">
 		<view class="hd">
 			<view class="region-selected">
-				<view class="item {{item.id == 0 ? 'disabled' : ''}} {{regionType === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="{{item.id}}">{{item.name}}</view>
+				<view class="item {{!item.code ? 'disabled' : ''}} {{regionType === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="{{item.code}}">{{item.name}}</view>
 			</view>
 			<view class="done {{selectRegionDone ? '' : 'disabled'}}" bindtap="doneSelectRegion">确定</view>
 		</view>
 		<view class="bd">
 			<scroll-view scroll-y="true" class="region-list">
-				<view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="{{item.id}}">{{item.post_name}}</view>
+				<view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="{{item.code}}">{{item.name}}</view>
 			</scroll-view>
 		</view>
 	</view>
