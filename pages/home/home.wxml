@@ -17,7 +17,31 @@
   <view class="home-main">
     <block wx:for="{{lista}}">
       <we-lista wx:if="{{item.name!=='AD'}}" data="{{item}}" wx:key="*this"></we-lista>
-      <rich-text wx:if="{{item.name==='AD'}}" nodes="{{item.html}}"></rich-text>
+      <rich-text wx:if="{{item.name==='AD'}}" data="{{item.html}}"></rich-text>
+    </block>
+  </view>
+  <view class='home-activity'>
+    <view class='activity-header'>
+      <view class='activity-left'>精品福利</view>
+      <view class='activity-right'></view>
+    </view>
+  </view>
+  <view class="home-main">
+    <block wx:for="{{listb}}">
+      <we-listb wx:if="{{item.name!=='AD'}}" data="{{item}}" wx:key="*this"></we-listb>
+      <rich-text wx:if="{{item.name==='AD'}}" data="{{item.html}}"></rich-text>
+    </block>
+  </view>
+  <view class='home-activity'>
+    <view class='activity-header'>
+      <view class='activity-left'>自助福利</view>
+      <view class='activity-right'></view>
+    </view>
+  </view>
+  <view class="home-main">
+    <block wx:for="{{listc}}">
+      <we-listc wx:if="{{item.name!=='AD'}}" data="{{item}}" wx:key="*this"></we-listc>
+      <rich-text wx:if="{{item.name==='AD'}}" data="{{item.html}}"></rich-text>
     </block>
   </view>
   <view class="container">

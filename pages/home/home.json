@@ -3,6 +3,8 @@
   "usingComponents": {
     "we-header": "header/header",
     "we-menu": "menus/menus",
-    "we-lista": "lista/lista"
+    "we-lista": "lista/lista",
+    "we-listb": "listb/listb",
+    "we-listc": "listc/listc"
   }
 }
