@@ -21,7 +21,12 @@ Page({
       console.log(res)
       if (res.status === 200) {
         that.setData({
-          addressList: res.result
+          addressList: res.result.map(item => {
+            return {
+              ...item,
+              address_info: JSON.parse(item.address_info)
+            }
+          })
         });
       }
     });

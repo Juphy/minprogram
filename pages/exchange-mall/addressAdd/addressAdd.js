@@ -3,14 +3,19 @@ Page({
   data: {
     address: {
       id: 0,
-      province_code: undefined,
-      city_code: undefined,
-      district_code: undefined,
-      zhen_code: undefined,
-      address: '',
+      sheng: undefined,
+      shi: undefined,
+      xian: undefined,
+      zhen: undefined,
+      sheng_s: undefined,
+      shi_s: undefined,
+      xian_s: undefined,
+      zhen_s: undefined,
+      address: '', // 全部地址
+      street: '', // 街道，详细地址
       full_region: '',
-      userName: '',
-      telNumber: '',
+      receiver_name: '',
+      receiver_phone: '',
       is_default: 0
     },
     addressId: 0,
@@ -47,21 +52,21 @@ Page({
   },
   bindinputMobile(event) {
     let address = this.data.address;
-    address.telNumber = event.detail.value;
+    address.receiver_phone = event.detail.value;
     this.setData({
       address: address
     });
   },
   bindinputName(event) {
     let address = this.data.address;
-    address.userName = event.detail.value;
+    address.receiver_name = event.detail.value;
     this.setData({
       address: address
     });
   },
   bindinputAddress(event) {
     let address = this.data.address;
-    address.detailInfo = event.detail.value;
+    address.street = event.detail.value;
     this.setData({
       address: address
     });
@@ -78,6 +83,7 @@ Page({
       address: address
     });
   },
+  // 没有详情接口， 后续改
   getAddressDetail() {
     let that = this;
     api.fetchPost(api.AddressDetail, {
@@ -86,7 +92,8 @@ Page({
       if (res.status === 200) {
         if (res.result) {
           that.setData({
-            address: res.result
+            
+            address: res.result.address_info
           });
         }
       }
@@ -111,29 +118,29 @@ Page({
 
     //设置区域选择数据
     let address = this.data.address;
-    if (address.province_code && address.city_code && address.district_code && address.zhen_code) {
+    if (address.sheng && address.shi && address.xian && address.zhen) {
       let selectRegionList = this.data.selectRegionList;
-      selectRegionList[0].code = address.province_code;
-      selectRegionList[0].name = address.province_name;
+      selectRegionList[0].code = address.sheng;
+      selectRegionList[0].name = address.sheng_s;
       selectRegionList[0].parent_code = undefined;
 
-      selectRegionList[1].code = address.city_code;
-      selectRegionList[1].name = address.city_name;
-      selectRegionList[1].parent_code = address.province_code;
+      selectRegionList[1].code = address.shi;
+      selectRegionList[1].name = address.shi_s;
+      selectRegionList[1].parent_code = address.sheng;
 
-      selectRegionList[2].code = address.district_code;
-      selectRegionList[2].name = address.district_name;
-      selectRegionList[2].parent_code = address.city_code;
+      selectRegionList[2].code = address.xian;
+      selectRegionList[2].name = address.xian_s;
+      selectRegionList[2].parent_code = address.shi;
 
-      selectRegionList[3].code = address.zhen_code;
-      selectRegionList[3].name = address.zhen_name;
-      selectRegionList[3].parent_code = address.district_code;
+      selectRegionList[3].code = address.zhen;
+      selectRegionList[3].name = address.zhen_s;
+      selectRegionList[3].parent_code = address.xian;
 
       this.setData({
         selectRegionList: selectRegionList,
         regionType: 3
       });
-      // this.getRegionList(address.city_code);
+      // this.getRegionList(address.shi);
     } else {
       this.setData({
         selectRegionList: [{
@@ -267,15 +274,15 @@ Page({
 
     let address = this.data.address;
     let selectRegionList = this.data.selectRegionList;
-    address.province_code = selectRegionList[0].code;
-    address.city_code = selectRegionList[1].code;
-    address.district_code = selectRegionList[2].code;
-    address.zhen_code = selectRegionList[3].code;
+    address.sheng = selectRegionList[0].code;
+    address.shi = selectRegionList[1].code;
+    address.xian = selectRegionList[2].code;
+    address.zhen = selectRegionList[3].code;
 
-    address.province_name = selectRegionList[0].name;
-    address.city_name = selectRegionList[1].name;
-    address.district_name = selectRegionList[2].name;
-    address.zhen_name = selectRegionList[3].name;
+    address.sheng_s = selectRegionList[0].name;
+    address.shi_s = selectRegionList[1].name;
+    address.xian_s = selectRegionList[2].name;
+    address.zhen_s = selectRegionList[3].name;
 
     address.full_region = selectRegionList.map(item => {
       return item.name;
@@ -327,7 +334,7 @@ Page({
   saveAddress() {
     let address = this.data.address;
     console.log(address);
-    if (address.userName == '') {
+    if (address.receiver_name == '') {
       // util.showErrorToast('请输入姓名');
       wx.showToast({
         title: '请输入姓名',
@@ -337,7 +344,7 @@ Page({
       return false;
     }
 
-    if (address.telNumber == '') {
+    if (address.receiver_phone == '') {
       // util.showErrorToast('请输入手机号码');
       wx.showToast({
         title: '请输入手机号码',
@@ -348,7 +355,7 @@ Page({
     }
 
 
-    if (!address.zhen_code) {
+    if (!address.zhen) {
       // util.showErrorToast('请输入省市区');
       wx.showToast({
         title: '请输入省市区',
@@ -358,7 +365,7 @@ Page({
       return false;
     }
 
-    if (address.detailInfo == '') {
+    if (address.street == '') {
       // util.showErrorToast('请输入详细地址');
       wx.showToast({
         title: '请输入详细地址',
@@ -370,17 +377,19 @@ Page({
     let that = this;
     api.fetchPost(api.AddressSave, {
       // code: address.code,
-      receiver_name: address.userName,
-      receiver_phone: address.telNumber,
+      receiver_name: address.receiver_name,
+      receiver_phone: address.receiver_phone,
       address_info: {
-        province_code: address.province_code,
-        city_code: address.city_code,
-        district_code: address.district_code,
-        is_default: address.is_default,
-        provinceName: address.province_name,
-        cityName: address.city_name,
-        countyName: address.district_name,
-        detailInfo: address.detailInfo,
+        sheng: address.sheng,
+        shi: address.shi,
+        xian: address.xian,
+        zhen: address.zhen,
+        // is_default: address.is_default,
+        sheng_s: address.sheng_s,
+        shi_s: address.shi_s,
+        xian_s: address.xian_s,
+        zhen_s: address.zhen_s,
+        street: address.street,
       }
     }, function (err2, res2) {
       if (res2.status === 200) {
@@ -408,7 +417,7 @@ Page({
       'address_array': [this.data.cnAddress]
     }, (err, res) => {
       if (res.status === 200) {
-        let cnAddress = res.result;
+        let cnAddress = res.result[0];
         let selectRegionList = this.data.selectRegionList;
         selectRegionList[0].code = cnAddress.sheng;
         selectRegionList[0].name = cnAddress.sheng_s;
@@ -425,12 +434,28 @@ Page({
         selectRegionList[3].code = cnAddress.zhen;
         selectRegionList[3].name = cnAddress.zhen_s;
         selectRegionList[3].parent_code = cnAddress.xian;
-  
+
+        const address = {...this.data.address};
+        address.street = cnAddress.street;
+        address.address = cnAddress.address;
+        address.sheng = cnAddress.sheng,
+        address.shi = cnAddress.shi,
+        address.xian = cnAddress.xian,
+        address.zhen = cnAddress.zhen,
+        address.sheng_s = cnAddress.sheng_s,
+        address.shi_s = cnAddress.shi_s,
+        address.xian_s = cnAddress.xian_s,
+        address.zhen_s = cnAddress.zhen_s,
+        address.full_region = selectRegionList.map(item => {
+              return item.name;
+            }).join(''),
+        console.log(address);
         this.setData({
           selectRegionList: selectRegionList,
+          address,
           regionType: 3
         });
-        this.doneSelectRegion();
+        // this.doneSelectRegion();
       }
     })
   },
