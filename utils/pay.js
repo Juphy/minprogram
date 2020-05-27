@@ -12,9 +12,9 @@ function payOrder(orderId) {
   return new Promise(function (resolve, reject) {
     api.fetchPost(api.PayPrepayId, {
       orderId: orderId
-    }, (res) => {
-      if (res.errno === 0) {
-        const payParam = res.data;
+    }, (err, res) => {
+      if (res.status === 200) {
+        const payParam = res.result;
         wx.requestPayment({
           'timeStamp': payParam.timeStamp,
           'nonceStr': payParam.nonceStr,

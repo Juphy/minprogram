@@ -36,18 +36,18 @@ Page({
     let that = this;
     var url = api.CartCheckout
     let buyType = this.data.isBuy ? 'buy' : 'cart'
-    api.fetchPost(url, { addressId: that.data.addressId, couponId: that.data.couponId, type: buyType }, function (res) {
-      if (res.errno === 0) {
+    api.fetchPost(url, { addressId: that.data.addressId, couponId: that.data.couponId, type: buyType }, function (err, res) {
+      if (res.status === 200) {
         that.setData({
-          checkedGoodsList: res.data.checkedGoodsList,
-          checkedAddress: res.data.checkedAddress,
-          actualPrice: res.data.actualPrice,
-          checkedCoupon: res.data.checkedCoupon ? res.data.checkedCoupon : "",
-          couponList: res.data.couponList ? res.data.couponList : "",
-          couponPrice: res.data.couponPrice,
-          freightPrice: res.data.freightPrice,
-          goodsTotalPrice: res.data.goodsTotalPrice,
-          orderTotalPrice: res.data.orderTotalPrice
+          checkedGoodsList: res.result.checkedGoodsList,
+          checkedAddress: res.result.checkedAddress,
+          actualPrice: res.result.actualPrice,
+          checkedCoupon: res.result.checkedCoupon ? res.result.checkedCoupon : "",
+          couponList: res.result.couponList ? res.result.couponList : "",
+          couponPrice: res.result.couponPrice,
+          freightPrice: res.result.freightPrice,
+          goodsTotalPrice: res.result.goodsTotalPrice,
+          orderTotalPrice: res.result.orderTotalPrice
         });
         //设置默认收获地址
         if (that.data.checkedAddress.id){
@@ -151,9 +151,9 @@ Page({
       });
       return false;
     }
-    api.fetchPost(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, type: this.data.buyType }, res => {
-      if (res.errno === 0) {
-        const orderId = res.data.orderInfo.id;
+    api.fetchPost(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, type: this.data.buyType }, (err, res) => {
+      if (res.status === 200) {
+        const orderId = res.result.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {
           wx.redirectTo({
             url: '/pages/payResult/payResult?status=1&orderId=' + orderId

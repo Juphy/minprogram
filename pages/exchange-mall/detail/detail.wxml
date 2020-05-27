@@ -63,5 +63,5 @@
 </scroll-view>
 
 <view class="bottom-btn">
-  <view class="c {{checkedProduct && number < checkedProduct.stock ? 'able' : ''}}" bindtap='buyGoods'>立即购买</view>
+  <view class="c {{checkedProduct && number <= checkedProduct.stock ? 'able' : ''}}" bindtap='buyGoods'>立即购买</view>
 </view>

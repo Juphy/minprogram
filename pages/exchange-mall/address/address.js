@@ -17,10 +17,16 @@ Page({
   },
   getAddressList (){
     let that = this;
-    api.fetchGet(api.AddressList, function (res) {
-      if (res.errno === 0) {
+    api.fetchGet(api.AddressList, function (err, res) {
+      console.log(res)
+      if (res.status === 200) {
         that.setData({
-          addressList: res.data
+          addressList: res.result.map(item => {
+            return {
+              ...item,
+              address_info: JSON.parse(item.address_info)
+            }
+          })
         });
       }
     });
@@ -31,7 +37,7 @@ Page({
     });
   },
   selectAddress(event){
-
+    // 这里要改成传具体地址，因为如果改了地址，发货地址就变了
     try {
       wx.setStorageSync('addressId', event.currentTarget.dataset.addressId);
     } catch (e) {
@@ -41,6 +47,13 @@ Page({
     //选择该收货地址
     wx.navigateBack({
       url: '/pages/exchange-mall/checkout/checkout'
+    });
+  },
+  deleteAddress(id) {
+    api.fetchPost(api.AddressDelete, {id}, (err, res) => {
+      if (res.status === 200) {
+        this.getAddressList()
+      }
     });
   },
   onHide: function () {
