@@ -8,10 +8,10 @@ const api = require('./api.js');
 /**
  * 判断用户是否登录
  */
-function payOrder(orderId) {
+function payOrder(orderNo) {
   return new Promise(function (resolve, reject) {
     api.fetchPost(api.PayPrepayId, {
-      orderId: orderId
+      order_no: orderNo
     }, (err, res) => {
       if (res.status === 200) {
         const payParam = res.result;

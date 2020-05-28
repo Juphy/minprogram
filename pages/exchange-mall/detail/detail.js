@@ -236,34 +236,44 @@ Page({
       // let checkedProduct = this.getCheckedProductItem();
       if (!this.data.checkedProduct) { //  || checkedProduct.length <= 0
         //找不到对应的product信息，提示没有库存
+        wx.showToast({
+          title: '没有库存',
+          icon: 'none',
+          duration: 1500
+        });
         return false;
       }
 
       //验证库存
       if (this.data.checkedProduct.stock < this.data.number) {
         //找不到对应的product信息，提示没有库存
+        wx.showToast({
+          title: '没有库存',
+          icon: 'none',
+          duration: 1500
+        });
         return false;
       }
 
       // 直接购买商品
-      api.fetchPost(api.BuyAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: this.data.checkedProduct.id }, function (err, res) {
-          let _res = res;
-          if (res.status === 200) {
-            that.setData({
-              openAttr: !that.data.openAttr,
-            });
-            wx.navigateTo({
-              url: '/pages/shopping/checkout/checkout?isBuy=true',
-            })
-          } else {
-            wx.showToast({
-              image: '/static/images/icon_error.png',
-              title: _res.errmsg,
-              mask: true
-            });
-          }
+      // api.fetchPost(api.BuyAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: this.data.checkedProduct.id }, function (err, res) {
+      //     let _res = res;
+      //     if (res.status === 200) {
+      //       that.setData({
+      //         openAttr: !that.data.openAttr,
+      //       });
+        wx.navigateTo({
+          url: `/pages/exchange-mall/checkout/checkout?goodsNum=${this.data.number}&skuId=${this.data.checkedProduct.id}&goodsTotalPrice=${this.data.number*this.data.checkedProduct.price}`,
+        })
+        //   } else {
+        //     wx.showToast({
+        //       image: '/static/images/icon_error.png',
+        //       title: _res.errmsg,
+        //       mask: true
+        //     });
+        //   }
 
-        });
+        // });
 
     }
   },

@@ -45,9 +45,9 @@ const ActivityList = HOST + '/home/activity_list',
   GetAddressObj = HOST + '/home/get_location_ex',
   AddressSave = HOST + '/user/edit_address',
   AddressDelete = HOST + '/user/del_address',
-  OrderSubmit = HOST + '/xxx/OrderSubmit',
+  OrderSubmit = HOST + '/order/sku_create',
    // 支付
-  PayPrepayId = HOST + '/xxx/PayPrepayId',
+  PayPrepayId = HOST + '/order/sku_pay',
   OrderQuery = HOST + '/xxx/OrderQuery',
   GoodsCouponList = HOST + '/xxx/GoodsCouponList';
 // get请求方法

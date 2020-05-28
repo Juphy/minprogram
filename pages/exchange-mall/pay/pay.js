@@ -1,13 +1,13 @@
 var api = require('../../../utils/api')
 Page({
   data: {
-    orderId: 0,
+    orderNo: 0,
     actualPrice: 0.00
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      orderId: options.orderId,
+      orderNo: options.orderNo,
       actualPrice: options.actualPrice
     })
   },
@@ -29,7 +29,7 @@ Page({
   //向服务请求支付参数
   requestPayParam() {
     let that = this;
-    api.fetchPost(api.PayPrepayId, { orderId: that.data.orderId, payType: 1 }, function (err, res) {
+    api.fetchPost(api.PayPrepayId, { order_no: that.data.orderNo }, function (err, res) { // , payType: 1
       if (res.status === 200) {
         let payParam = res.result;
         wx.requestPayment({

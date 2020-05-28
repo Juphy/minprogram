@@ -2,23 +2,24 @@
     <view class="address-box">
         <view class="address-item" bindtap="selectAddress" wx:if="{{checkedAddress.id > 0}}">
             <view class="l">
-                <text class="name">{{checkedAddress.userName}}</text>
-                <text class="default" wx:if="{{checkedAddress.is_default === 1}}">默认</text>
+                <text class="name">{{checkedAddress.receiver_name}}</text>
+                <!-- <text class="default" wx:if="{{checkedAddress.is_default === 1}}">默认</text> -->
             </view>
             <view class="m">
-                <text class="mobile">{{checkedAddress.telNumber}}</text>
-                <text class="address">{{checkedAddress.full_region+checkedAddress.detailInfo}}</text>
+                <text class="mobile">{{checkedAddress.receiver_phone}}</text>
+                <text class="address">{{checkedAddress.address_info.sheng_s}}{{checkedAddress.address_info.shi_s}}{{checkedAddress.address_info.xian_s}}{{checkedAddress.address_info.zhen_s}}{{item.address_info.street}}
+                </text>
             </view>
             <view class="r">
-                <image src="/static/images/address_right.png"></image>
+                <image src="../../../image/address_right.png"></image>
             </view>
         </view>
-        <view class="address-item address-empty" bindtap="addAddress" wx:if="{{checkedAddress.id <= 0}}">
+        <view class="address-item address-empty" bindtap="selectAddress" wx:if="{{checkedAddress.id <= 0}}">
             <view class="m">
-               还没有收货地址，去添加
+               请选择收货地址
             </view>
             <view class="r">
-                <image src="/static/images/address_right.png"></image>
+                <image src="../../../image/address_right.png"></image>
             </view>
         </view>
     </view>
@@ -30,7 +31,7 @@
                 <text class="txt">{{couponDesc}}</text>
             </view>
             <view class="r">
-                <image src="/static/images/address_right.png"></image>
+                <image src="../../../image/address_right.png"></image>
             </view>
         </view>
     </view>
