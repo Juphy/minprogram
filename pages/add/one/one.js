@@ -227,6 +227,11 @@ Page({
     })
   },
 
+  bindIndex: function (e) {
+    var index = +e.currentTarget.dataset.index;
+    this.setData({ index });
+  },
+
   formSubmit: function (e) {
 
   },
@@ -526,38 +531,39 @@ Page({
         return;
       }
       params['describe'] = describe;
-      let draw_mode = this.data.draw_mode, end_time, constraint_max_num;
-      params['draw_mode'] = draw_mode;
-      switch (draw_mode) {
-        case 1:
-          if (!this.data.multiIndex) {
-            wx.showToast({
-              title: `请选择开奖时间`,
-              icon: 'none'
-            });
-            return;
-          };
-          let date = this.data.multiArray[0][this.data.multiIndex[0]], hour = this.data.multiArray[1][this.data.multiIndex[1]], minute = this.data.multiArray[2][this.data.multiIndex[2]];
-          params['end_time'] = new Date().getFullYear() + '-' + date.slice(0, 2) + '-' + date.slice(3, 5) + ' ' + hour + ':' + minute + ':00';
-          break;
-        case 3:
-          params['constraint_max_num'] = this.data.constraint_max_num
-          break;
+      if (this.data.allChecked) {
+        let draw_mode = this.data.draw_mode, end_time, constraint_max_num;
+        params['draw_mode'] = draw_mode;
+        switch (draw_mode) {
+          case 1:
+            if (!this.data.multiIndex) {
+              wx.showToast({
+                title: `请选择开奖时间`,
+                icon: 'none'
+              });
+              return;
+            };
+            let date = this.data.multiArray[0][this.data.multiIndex[0]], hour = this.data.multiArray[1][this.data.multiIndex[1]], minute = this.data.multiArray[2][this.data.multiIndex[2]];
+            params['end_time'] = new Date().getFullYear() + '-' + date.slice(0, 2) + '-' + date.slice(3, 5) + ' ' + hour + ':' + minute + ':00';
+            break;
+          case 3:
+            params['constraint_max_num'] = this.data.constraint_max_num
+            break;
+        }
+        let constraint_sex, constraint_realname, chaptcha;
+        if (this.data.joinSet) {
+          params['constraint_sex'] = this.data.sex;
+          params['constraint_realname'] = this.data.realname;
+          params['chaptcha'] = this.data.chaptcha;
+        }
+        params['need_share'] = this.data.need_share ? 1 : 0;
+        params['need_comment'] = this.data.openComment ? 1 : 0;
+        params['introduce'] = {
+          introduce: this.data.introduce,
+          files: this.data.files
+        };
       }
-      let constraint_sex, constraint_realname, chaptcha;
-      if (this.data.joinSet) {
-        params['constraint_sex'] = this.data.sex;
-        params['constraint_realname'] = this.data.realname;
-        params['chaptcha'] = this.data.chaptcha;
-      }
-      params['need_share'] = this.data.need_share ? 1 : 0;
-      params['need_comment'] = this.data.openComment ? 1 : 0;
-      params['introduce'] = {
-        introduce: this.data.introduce,
-        files: this.data.files
-      };
       params['type'] = this.data.typeList[this.data.type].id;
-      console.log(params);
       Api.fetchPost(Api.ActivityCreateByUser, params, (err, res) => {
         console.log(res);
       })

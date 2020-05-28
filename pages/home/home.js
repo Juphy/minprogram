@@ -5,11 +5,9 @@ const App = getApp();
 
 Page({
 	data: {
-		list1: [], // 推荐福利
-		list2: [], // 精品福利
-		list3: [], // 自助福利
-		page: 1,
-		pagesize: 20,
+		lista: [], // 推荐福利
+		listb: [], // 精品福利
+		listc: [], // 自助福利
 		lucky: 85,
 		money: 1.27
 	},
@@ -21,18 +19,15 @@ Page({
 	},
 
 	onLoad: function () {
+		this.getPerson();
+	},
+
+	onShow: function () {
 		this.getData();
 	},
 
 	onPullDownRefresh: function () {
-		this.setData({
-			page: 1,
-		});
 		this.getData();
-	},
-
-	onReachBottom: function () {
-		this.lower();
 	},
 
 	// 获取活动列表
@@ -41,22 +36,22 @@ Page({
 			title: "数据加载中...",
 		});
 		var that = this;
-		var data = {
-			// page: that.data.page,
-			// pagesize: that.data.pagesize,
-		};
-		Api.fetchPost(Api.ActivityList, data, (err, res) => {
+		Api.fetchGet(Api.ActivityList, (err, res) => {
 			wx.hideLoading();
-			this.setData({});
+			if (res.status === 200) {
+				res = res.result;
+				res[2][1]['name'] = 'AD';
+				res[2][1]['html'] = `
+				<div style="margin-bottom: 12px">
+					<h1 style="text-align: center">广告</h1>
+				</div>
+				`;
+				this.setData({
+					lista: res[2],
+					listb: res[3],
+					listc: res[4]
+				})
+			}
 		});
-	},
-
-	// 滑动底部加载
-	lower: function () {
-		var that = this;
-		that.setData({
-			page: that.data.page + 1,
-		});
-		that.getData();
-	},
+	}
 });

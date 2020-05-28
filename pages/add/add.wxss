@@ -84,3 +84,8 @@
 .weui-cell_access .weui-cell__ft:after {
   margin-top: -13px;
 }
+
+.weui-cell:before,
+.weui-cells:before {
+  border-top: none;
+}

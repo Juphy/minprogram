@@ -90,6 +90,7 @@
 
 .one-textarea {
   background-color: #fff;
+  color: var(--weui-FG-1);
 }
 
 .one-textarea editor {
@@ -569,6 +570,6 @@ editor {
   box-sizing: border-box;
 }
 
-.promote-cell:before{
+.promote-cell:before {
   border: none;
 }

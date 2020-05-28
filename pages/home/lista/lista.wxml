@@ -1,0 +1,22 @@
+<view class="lista-container">
+   <view class="lista-img">
+      <image src="{{image}}" mode="aspectFill" lazy-load="false" />
+      <view class="lista-shop">
+         <span>{{shop_name}}</span>
+         <span>赞助</span>
+      </view>
+   </view>
+   <view class="lista-text">
+      <view class="lista-label" wx:if="{{prizeFlag}}">一等奖：</view>
+      <view class="lista-label" wx:else>奖品：</view>
+      <text class="lista-content">驱蚊子驱蚊子驱蚊子驱蚊子{{name}}</text>
+      <view class="lista-num">×{{num}}份</view>
+   </view>
+   <view class="lista-mode">
+      <block wx:if="{{draw_mode===1}}">{{end_time}} 自动开奖</block>
+      <block wx:if="{{draw_mode===2}}">手动开奖</block>
+      <block wx:if="{{draw_mode===3}}">人数达{{constraint_max_num}}人 自动开奖</block>
+   </view>
+   <view class="constraint_sex||constraint_realname||chaptcha">
+   </view>
+</view>

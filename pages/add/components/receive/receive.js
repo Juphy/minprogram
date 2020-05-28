@@ -40,7 +40,7 @@ Page({
 
 	bindPromoteTap: function () {
 		wx.navigateTo({
-			url: "/pages/common/promote/promote"
+			url: "/pages/add/components/promote/promote"
 		})
 	},
 
