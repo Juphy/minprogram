@@ -5,9 +5,9 @@
                 <view class="l">订单编号：{{item.order_no}}</view>
                 <view class="r">{{item.status}}</view>
             </view>
-            <view class="goods"  wx:for="{{item.goodsList}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
-                <view class="img">
-                    <image src="{{item.list_pic_url}}"></image>
+            <view class="goods">
+                <view class="img" wx:if="item.images">
+                    <image src="{{item.images[0]}}"></image>
                 </view>
                 <view class="info">
                     <text class="name">{{item.goods_name}}</text>

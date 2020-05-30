@@ -7,7 +7,7 @@ Page({
     loadmoreText: '正在加载更多数据',
     nomoreText: '全部加载完成',
     nomore: false,
-    hasMorePages: false
+    hasMorePages: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -19,6 +19,7 @@ Page({
 
       }
     });
+    console.log(1);
     this.getOrderList();
   },
 
@@ -38,11 +39,14 @@ Page({
       })
       return;
     }
-
+    console.log(2)
     api.fetchPost(api.OrderList, {page: that.data.page, pagesize: that.data.pagesize}, function (err, res) {
       if (res.status === 200) {
         that.setData({
-          orderList: that.data.orderList.concat(res.result.data),
+          orderList: that.data.orderList.concat(res.result.data.map(item => {
+            item.images = JSON.parse(item.images) || null;
+            return item;
+          })),
           page: res.result.currentPage + 1,
           hasMorePages: res.result.has_more_pages
         });
