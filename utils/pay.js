@@ -14,7 +14,7 @@ function payOrder(orderNo) {
       order_no: orderNo
     }, (err, res) => {
       if (res.status === 200) {
-        const payParam = res.result;
+        const payParam = JSON.parse(res.result.pay_json);
         wx.requestPayment({
           'timeStamp': payParam.timeStamp,
           'nonceStr': payParam.nonceStr,

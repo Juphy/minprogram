@@ -13,7 +13,7 @@
             <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}"   url="/pages/exchange-mall/detail/detail?id={{iitem.id}}" wx:for="{{goodsList}}" wx:for-item="iitem" wx:for-index="iindex" >
                 <image class="img" src="{{iitem.images[0]}}" background-size="cover"></image>
                 <text class="name">{{iitem.goods_name}}</text>
-                <text class="price">￥{{iitem.low_price}}</text>
+                <text class="price">￥{{iitem.low_price / 100}}</text>
             </navigator>
         </view>
     </view>

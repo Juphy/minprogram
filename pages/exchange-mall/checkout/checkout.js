@@ -176,7 +176,7 @@ Page({
     }
     api.fetchPost(api.OrderSubmit, { sku_id: Number(this.data.skuId), goods_num: Number(this.data.goodsNum), receiver_name: this.data.checkedAddress.receiver_name, receiver_phone: this.data.checkedAddress.receiver_phone, address_info: this.data.checkedAddress.address_info, }, (err, res) => {
       if (res.status === 200) {
-        const orderNo = res.result;
+        const orderNo = res.result.order_no;
         pay.payOrder(orderNo).then(res => {
           wx.redirectTo({
             url: '/pages/payResult/payResult?status=1&orderNo=' + orderNo
