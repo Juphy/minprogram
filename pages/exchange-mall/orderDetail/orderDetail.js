@@ -2,28 +2,30 @@ var api = require('../../../utils/api');
 
 Page({
   data: {
-    orderId: 0,
+    orderNo: 0,
     orderInfo: {},
-    orderGoods: [],
-    handleOption: {}
+    // orderGoods: [],
+    // handleOption: {}
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      orderId: options.id
+      orderNo: options.orderNo
     });
     this.getOrderDetail();
   },
   getOrderDetail() {
     let that = this;
     api.fetchPost(api.OrderDetail, {
-      orderId: that.data.orderId
+      order_no: that.data.orderNo
     }, function (err, res) {
       if (res.status === 200) {
+        res.result.images = JSON.parse(res.result.images);
+        res.result.address_info = JSON.parse(res.result.address_info);
         that.setData({
-          orderInfo: res.result.orderInfo,
-          orderGoods: res.result.orderGoods,
-          handleOption: res.result.handleOption
+          orderInfo: res.result,
+          // orderGoods: res.result.orderGoods,
+          // handleOption: res.result.handleOption
         });
         //that.payTimer();
       }
@@ -86,7 +88,7 @@ Page({
         if (res.confirm) {
 
           util.request(api.OrderCancel,{
-            orderId: orderInfo.id
+            orderNo: orderInfo.id
           }).then(function (res) {
             if (res.errno === 0) {
               wx.showModal({
@@ -110,8 +112,44 @@ Page({
   },
   payOrder() {
     let that = this;
+
+    // 查看时间是否超过了15分钟
+    if (this.data.orderInfo.pay_time) {
+      const diff = (new Date().getTime() / 1000 - this.data.orderInfo.pay_time) / 60;
+      console.log(diff);
+      if (diff > 15) {
+        wx.showToast({
+          title: '订单超时',
+          icon: 'none',
+          duration: 1500
+        });
+        return;
+      }
+      const payParam = JSON.parse(this.data.orderInfo.pay_json);
+      wx.requestPayment({
+        'timeStamp': payParam.timeStamp,
+        'nonceStr': payParam.nonceStr,
+        'package': payParam.package,
+        'signType': payParam.signType,
+        'paySign': payParam.paySign,
+        'success': function (res) {
+          wx.redirectTo({
+            url: '/pages/exchange-mall/payResult/payResult?status=true',
+          })
+        },
+        'fail': function (res) {
+          wx.redirectTo({
+            url: '/pages/exchange-mall/payResult/payResult?status=false',
+          })
+        }
+      });
+    }
+
+    // 查看pay_json 是否有， 有的话， 直接调支付
+
+
     api.fetchPost(api.PayPrepayId, {
-      orderId: that.data.orderId || 15
+      order_no: that.data.orderNo
     }, function (err, res) {
       if (res.status === 200) {
         const payParam = res.result;
@@ -122,10 +160,14 @@ Page({
           'signType': payParam.signType,
           'paySign': payParam.paySign,
           'success': function (res) {
-            console.log(res);
+            wx.redirectTo({
+              url: '/pages/exchange-mall/payResult/payResult?status=true',
+            })
           },
           'fail': function (res) {
-            console.log(res);
+            wx.redirectTo({
+              url: '/pages/exchange-mall/payResult/payResult?status=false',
+            })
           }
         });
       }
@@ -179,7 +221,7 @@ Page({
               if (res.confirm) {
 
                   api.fetchPost(api.OrderConfirm, {
-                      orderId: orderInfo.id
+                      orderNo: orderInfo.id
                   }, function (err, res) {
                       if (res.status === 200) {
                           wx.showModal({

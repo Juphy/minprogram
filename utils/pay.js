@@ -22,10 +22,14 @@ function payOrder(orderNo) {
           'signType': payParam.signType,
           'paySign': payParam.paySign,
           'success': function (res) {
-            resolve(res);
+            wx.redirectTo({
+              url: '/pages/exchange-mall/payResult/payResult?status=true',
+            })
           },
           'fail': function (res) {
-            reject(res);
+            wx.redirectTo({
+              url: '/pages/exchange-mall/payResult/payResult?status=false',
+            })
           },
           'complete': function (res) {
             reject(res);

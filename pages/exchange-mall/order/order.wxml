@@ -8,7 +8,7 @@
 		</scroll-view>
 	</view>
     <view class="orders">
-        <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
+        <navigator url="../orderDetail/orderDetail?orderNo={{item.order_no}}" class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
             <view class="h">
                 <view class="l">订单编号：{{tools.substring(item.order_no, 0, 11)}}··· <button class="btn-copy" data-order-no="{{item.order_no}}" catchtap="copyOrderNo" >一键复制</button></view>
                 <view class="r">{{item.status}}</view>
@@ -24,7 +24,7 @@
                 <view class="status"></view>
             </view>
             <view class="b">
-                <view class="l">实付：￥{{item.total_price / 100}}</view>
+                <view class="l">实付：￥{{item.real_price / 100}}</view>
                 <view class="r">
                     <button class="btn" data-order-index="{{index}}" catchtap="payOrder" wx:if="{{item.status === 100}}">去付款</button>
                 </view>

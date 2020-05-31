@@ -67,8 +67,9 @@ page{
 }
 
 .item-c .btn.active{
-  background: #b4282d;
-  color: #fff;
+  background: #fff;
+  color: #b4282d;
+  border: 5rpx;
 }
 
 .order-goods{

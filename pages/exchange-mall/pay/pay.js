@@ -2,13 +2,13 @@ var api = require('../../../utils/api')
 Page({
   data: {
     orderNo: 0,
-    actualPrice: 0.00
+    realPrice: 0.00
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       orderNo: options.orderNo,
-      actualPrice: options.actualPrice
+      realPrice: options.realPrice
     })
   },
   onReady: function () {
@@ -40,12 +40,12 @@ Page({
           'paySign': payParam.paySign,
           'success': function (res) {
             wx.redirectTo({
-              url: '/pages/payResult/payResult?status=true',
+              url: '/pages/exchange-mall/payResult/payResult?status=true',
             })
           },
           'fail': function (res) {
             wx.redirectTo({
-              url: '/pages/payResult/payResult?status=false',
+              url: '/pages/exchange-mall/payResult/payResult?status=false',
             })
           }
         })

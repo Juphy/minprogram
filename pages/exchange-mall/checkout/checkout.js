@@ -12,7 +12,7 @@ Page({
     freightPrice: 0.00,    //快递费
     couponPrice: 0.00,     //优惠券的价格
     orderTotalPrice: 0.00,  //订单总价
-    actualPrice: 0.00,     //实际需要支付的总价
+    realPrice: 0.00,     //实际需要支付的总价
     addressId: 0,
     // addressData: {},
     couponId: 0,
@@ -38,10 +38,10 @@ Page({
       const freightPrice = 0.00;    //快递费
       const couponPrice = 0.00;    //优惠券的价格
       const orderTotalPrice = 0.00;  //订单总价
-      const actualPrice = 0.00;     //实际需要支付的总价
+      const realPrice = 0.00;     //实际需要支付的总价
       this.setData({
         goodsTotalPrice : options.goodsTotalPrice,
-        actualPrice: options.goodsTotalPrice
+        realPrice: options.goodsTotalPrice // 这个价钱还不知道。
       })
     }
     //每次重新加载界面，清空数据
@@ -57,7 +57,7 @@ Page({
   //       that.setData({
   //         checkedGoodsList: res.result.checkedGoodsList,
   //         checkedAddress: res.result.checkedAddress,
-  //         actualPrice: res.result.actualPrice,
+  //         realPrice: res.result.realPrice,
   //         checkedCoupon: res.result.checkedCoupon ? res.result.checkedCoupon : "",
   //         couponList: res.result.couponList ? res.result.couponList : "",
   //         couponPrice: res.result.couponPrice,
@@ -179,11 +179,11 @@ Page({
         const orderNo = res.result.order_no;
         pay.payOrder(orderNo).then(res => {
           wx.redirectTo({
-            url: '/pages/payResult/payResult?status=1&orderNo=' + orderNo
+            url: '/pages/exchange-mall/payResult/payResult?status=1&orderNo=' + orderNo
           });
         }).catch(res => {
           wx.redirectTo({
-            url: '/pages/payResult/payResult?status=0&orderNo=' + orderNo
+            url: '/pages/exchange-mall/payResult/payResult?status=0&orderNo=' + orderNo
           });
         });
       } else {

@@ -100,7 +100,7 @@ Page({
       let order = that.data.orderList[orderIndex];
       console.log(order);
       wx.redirectTo({
-          url: '/pages/exchange-mall/pay/pay?orderId=' + order.id + '&actualPrice=' + order.actual_price,
+          url: '/pages/exchange-mall/pay/pay?orderNo=' + order.order_no + '&realPrice=' + order.real_price,
       })
   },
   copyOrderNo(event) {
