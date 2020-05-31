@@ -10,7 +10,7 @@
     <view class="orders">
         <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
             <view class="h">
-                <view class="l">订单编号：{{tools.substring(item.order_no, 0, 11)}}··· <button class="btn-copy" data-order-no="{{item.order_no}}" catchtap="copyOrderNo" >一件复制</button></view>
+                <view class="l">订单编号：{{tools.substring(item.order_no, 0, 11)}}··· <button class="btn-copy" data-order-no="{{item.order_no}}" catchtap="copyOrderNo" >一键复制</button></view>
                 <view class="r">{{item.status}}</view>
             </view>
             <view class="goods">

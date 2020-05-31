@@ -123,6 +123,7 @@ page {
   height: auto;
   width: 100%;
   overflow: hidden;
+  margin-top: 84rpx;
 }
 
 .order {
