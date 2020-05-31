@@ -62,6 +62,26 @@ Page({
           url: '/pages/exchange-mall/pay?orderId=' + order.id + '&actualPrice=' + order.actual_price,
       })
   },
+  copyOrderNo(event) {
+    let orderNo = event.currentTarget.dataset.orderNo;
+    wx.setClipboardData({
+      data: orderNo,
+      success: (res) => {
+        wx.showToast({
+          title: '已复制到剪切板',
+          icon: 'none',
+          duration: 1500
+        });
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '复制失败',
+          icon: 'none',
+          duration: 1500
+        });
+      }
+    })
+  },
   onReady:function(){
     // 页面渲染完成
   },

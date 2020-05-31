@@ -108,8 +108,21 @@ page{
   padding: 0 20rpx;
   border-radius: 5rpx;
   font-size: 26rpx;
-  color: #fff;
-  background: #b4282d;
+  color: #b4282d;
+  background: #fff;
+}
+
+.order .h .l .btn-copy {
+  display: inline-block;
+  margin-top: 0rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  text-align: center;
+  padding: 0 14rpx;
+  border-radius: 42rpx;
+  font-size: 20rpx;
+  color: #818181;
+  background: #fff;
 }
 
 .loadmore {
