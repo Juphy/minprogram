@@ -6,6 +6,7 @@ Page({
     navList: [],
     goodsList: [],
     id: 0,
+    shopId: 1,
     scrollLeft: 0,
     scrollTop: 0,
     scrollHeight: 0,
@@ -19,11 +20,11 @@ Page({
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
-    // if (options.id) { // 目前不会传过来id
-    //   that.setData({
-    //     id: parseInt(options.id)
-    //   });
-    // }
+    if (options.shop_id) { // 目前不会传过来id
+      that.setData({
+        shopId: parseInt(options.shop_id)
+      });
+    }
 
     wx.getSystemInfo({
       success: function (res) {
@@ -90,7 +91,7 @@ Page({
     if (that.data.nomore) {
       return;
     }
-    const data = {page: that.data.page, pagesize: that.data.size};
+    const data = {page: that.data.page, pagesize: that.data.size, shop_id: that.data.shopId};
     if (that.data.id) {
       data['group_id'] = that.data.id;
     }
