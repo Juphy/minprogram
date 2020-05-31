@@ -36,7 +36,7 @@
                         <text class="number">x{{orderInfo.goods_num}}</text>
                     </view>
                     <view class="attr">{{orderInfo.goods_name||''}}</view>
-                    <view class="price">￥{{orderInfo.goods_price}}</view>
+                    <view class="price">￥{{orderInfo.goods_price / 100}}</view>
                 </view>
             </view>
         </view>

@@ -119,7 +119,7 @@ Page({
       console.log(diff);
       if (diff > 15) {
         wx.showToast({
-          title: '订单超时',
+          title: '订单已超时，请重新下单',
           icon: 'none',
           duration: 1500
         });
