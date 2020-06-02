@@ -4,13 +4,13 @@ const pay = require('../../../utils/pay.js');
 Page({
   data: {
     status: false,
-    orderId: 0
+    orderNo: 0
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      orderId: options.orderId || 24,
-      status: options.status
+      orderNo: options.orderNo,
+      status: options.status == 1
     })
     this.updateSuccess()
   },
@@ -32,12 +32,13 @@ Page({
   
   updateSuccess: function () {
     let that = this
-    api.fetchPost(api.OrderQuery, { orderId: this.data.orderId}, function (res) {
-    })
+    // 支付成功后查询
+    // api.fetchPost(api.OrderQuery, { order_no: this.data.orderNo}, function (res) {
+    // })
   },
 
   payOrder() {
-    pay.payOrder(parseInt(this.data.orderId)).then(res => {
+    pay.payOrder(this.data.orderNo).then(res => {
       this.setData({
         status: true
       });

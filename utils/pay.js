@@ -14,7 +14,8 @@ function payOrder(orderNo) {
       order_no: orderNo
     }, (err, res) => {
       if (res.status === 200) {
-        const payParam = JSON.parse(res.result.pay_json);
+        // const payParam = JSON.parse(res.result.pay_json);
+        const payParam = res.result;
         wx.requestPayment({
           'timeStamp': payParam.timeStamp,
           'nonceStr': payParam.nonceStr,
@@ -23,12 +24,12 @@ function payOrder(orderNo) {
           'paySign': payParam.paySign,
           'success': function (res) {
             wx.redirectTo({
-              url: '/pages/exchange-mall/payResult/payResult?status=true',
+              url: '/pages/exchange-mall/payResult/payResult?status=true&orderNo=' + orderNo,
             })
           },
           'fail': function (res) {
             wx.redirectTo({
-              url: '/pages/exchange-mall/payResult/payResult?status=false',
+              url: '/pages/exchange-mall/payResult/payResult?status=false&orderNo=' + orderNo,
             })
           },
           'complete': function (res) {

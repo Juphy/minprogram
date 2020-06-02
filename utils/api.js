@@ -51,6 +51,7 @@ const ActivityList = HOST + '/home/activity_list',
   PayPrepayId = HOST + '/order/sku_pay',
   OrderQuery = HOST + '/xxx/OrderQuery',
   OrderDetail = HOST + '/user/order_info',
+  Question = HOST + '/user/question_answers',
   GoodsCouponList = HOST + '/xxx/GoodsCouponList';
 // get请求方法
 let fetchGet = function (url, callback) {
@@ -117,6 +118,7 @@ module.exports = {
   OrderQuery,
   GoodsCouponList,
   OrderDetail,
+  Question,
   // METHOD
   fetchGet,
   fetchPost

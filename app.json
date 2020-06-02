@@ -27,7 +27,8 @@
     "pages/exchange-mall/payResult/payResult",
     "pages/exchange-mall/pay/pay",
     "pages/exchange-mall/order/order",
-    "pages/exchange-mall/orderDetail/orderDetail"
+    "pages/exchange-mall/orderDetail/orderDetail",
+    "pages/help/help"
   ],
   "window": {
     "backgroundColor": "#EA5750",

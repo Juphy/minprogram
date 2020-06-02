@@ -40,12 +40,12 @@ Page({
           'paySign': payParam.paySign,
           'success': function (res) {
             wx.redirectTo({
-              url: '/pages/exchange-mall/payResult/payResult?status=true',
+              url: '/pages/exchange-mall/payResult/payResult?status=true&orderNo=' + that.data.orderNo,
             })
           },
           'fail': function (res) {
             wx.redirectTo({
-              url: '/pages/exchange-mall/payResult/payResult?status=false',
+              url: '/pages/exchange-mall/payResult/payResult?status=false&orderNo=' + that.data.orderNo,
             })
           }
         })

@@ -179,11 +179,11 @@ Page({
         const orderNo = res.result.order_no;
         pay.payOrder(orderNo).then(res => {
           wx.redirectTo({
-            url: '/pages/exchange-mall/payResult/payResult?status=1&orderNo=' + orderNo
+            url: '/pages/exchange-mall/payResult/payResult?status=true&orderNo=' + orderNo
           });
         }).catch(res => {
           wx.redirectTo({
-            url: '/pages/exchange-mall/payResult/payResult?status=0&orderNo=' + orderNo
+            url: '/pages/exchange-mall/payResult/payResult?status=false&orderNo=' + orderNo
           });
         });
       } else {

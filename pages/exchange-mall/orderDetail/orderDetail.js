@@ -50,11 +50,11 @@ Page({
 
     var errorMessage = '';
     switch (order_status){
-      case 300: {
+      case 201: {
         errorMessage = '订单已发货';
         break;
       }
-      case 301:{
+      case 202:{
         errorMessage = '订单已收货';
         break;
       }
@@ -62,10 +62,10 @@ Page({
         errorMessage = '订单已取消';
         break;
       }
-      case 102: {
-        errorMessage = '订单已删除';
-        break;
-      }
+      // case 102: {
+      //   errorMessage = '订单已删除';
+      //   break;
+      // }
       case 401: {
         errorMessage = '订单已退款';
         break;
@@ -125,28 +125,7 @@ Page({
         });
         return;
       }
-      const payParam = JSON.parse(this.data.orderInfo.pay_json);
-      wx.requestPayment({
-        'timeStamp': payParam.timeStamp,
-        'nonceStr': payParam.nonceStr,
-        'package': payParam.package,
-        'signType': payParam.signType,
-        'paySign': payParam.paySign,
-        'success': function (res) {
-          wx.redirectTo({
-            url: '/pages/exchange-mall/payResult/payResult?status=true',
-          })
-        },
-        'fail': function (res) {
-          wx.redirectTo({
-            url: '/pages/exchange-mall/payResult/payResult?status=false',
-          })
-        }
-      });
     }
-
-    // 查看pay_json 是否有， 有的话， 直接调支付
-
 
     api.fetchPost(api.PayPrepayId, {
       order_no: that.data.orderNo
@@ -161,12 +140,12 @@ Page({
           'paySign': payParam.paySign,
           'success': function (res) {
             wx.redirectTo({
-              url: '/pages/exchange-mall/payResult/payResult?status=true',
+              url: '/pages/exchange-mall/payResult/payResult?status=true&orderNo=' + that.data.orderNo,
             })
           },
           'fail': function (res) {
             wx.redirectTo({
-              url: '/pages/exchange-mall/payResult/payResult?status=false',
+              url: '/pages/exchange-mall/payResult/payResult?status=false&orderNo=' + that.data.orderNo,
             })
           }
         });
@@ -183,11 +162,11 @@ Page({
 
       var errorMessage = '';
       switch (order_status) {
-          // case 300: {
-          //   errorMessage = '订单已发货';
-          //   break;
-          // }
-          case 301: {
+          case 201: {
+            errorMessage = '订单已发货';
+            break;
+          }
+          case 202: {
               errorMessage = '订单已收货';
               break;
           }
@@ -195,10 +174,10 @@ Page({
               errorMessage = '订单已取消';
               break;
           }
-          case 102: {
-              errorMessage = '订单已删除';
-              break;
-          }
+          // case 102: {
+          //     errorMessage = '订单已删除';
+          //     break;
+          // }
           case 401: {
               errorMessage = '订单已退款';
               break;
