@@ -12,3 +12,6 @@ page ,.container{
  font-size: 35rpx;
  color: #009944;
 }
+.list-cell {
+  
+}
