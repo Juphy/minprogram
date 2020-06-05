@@ -3,10 +3,8 @@
 		<view class="help-head">{{item.name}}</view>
 		<view class="list-group" style="margin-top: 0;">
       <view class="list-cell" wx:for="{{helpList[item.value]}}" wx:for-item="iitem" wx:key="{{index}}">
-        <view class="list-cell-bd">
 					<view class="list-label" bindtap="select" data-id="{{iitem.id}}">{{iitem.question}}</view>
-          <rich-text hidden="selected[iitem.id]" nodes="{{iitem.answer}}"></rich-text>
-				</view>
+          <rich-text class="list-rich" hidden="{{!selected[iitem.id]}}" nodes="{{iitem.answer}}"></rich-text>
       </view>
 			<!-- <navigator url="../helpInfo/helpInfo?id={{iitem.id}}" class="list-cell" wx:for="{{helpList[item.value]}}" wx:for-item="iitem" wx:key="{{index}}">
 				<view class="list-cell-bd">

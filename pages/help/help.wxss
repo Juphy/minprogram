@@ -7,11 +7,14 @@ page ,.container{
    position: relative;
 }
 .help-head{
- background-color: #fff;
  padding: 30rpx;
  font-size: 35rpx;
- color: #009944;
 }
 .list-cell {
-  
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.list-cell .list-rich {
+  color: #666;
 }

@@ -32,7 +32,6 @@ Page({
 
   },
   select(event) {
-    console.log(event.currentTarget.dataset.id);
     const selected = {...this.data.selected};
     selected[event.currentTarget.dataset.id] = !selected[event.currentTarget.dataset.id];
     this.setData({
