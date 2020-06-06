@@ -1,24 +1,21 @@
+<import src="../../wxParse/wxParse.wxml" />
 <view class="container">
-	<view wx:for="{{options}}">
-		<view class="help-head">{{item.name}}</view>
+	<view wx:for="{{options}}" wx:for-item="item" wx:for-index="oi">
+		<view class="help-head">{{item.name + oi}}</view>
 		<view class="list-group" style="margin-top: 0;">
 			<view class="list-cell" wx:for="{{helpList[item.value]}}" wx:for-item="iitem" wx:key="{{index}}">
 				<view class="list-label" bindtap="select" data-id="{{iitem.id}}">
 					<image class="img" src="../../image/question-circle.png"></image>{{iitem.question}}
 				</view>
-				<view hidden="{{!selected[iitem.id]}}" >
-				<view class="list-rich">
-					<image class="rich-img" src="../../image/answer.png"></image>
-					<view class="rich"><rich-text nodes="{{iitem.answer}}"></rich-text></view>
-				</view>
+				<view hidden="{{!selected[iitem.id]}}">
+					<view class="list-rich">
+						<image class="rich-img" src="../../image/answer.png"></image>
+						<view class="rich">
+							<template is="wxParse" data="{{wxParseData:replyTemArray[tempIndex[oi+'_'+index]]}}" />
+						</view>
+					</view>
 				</view>
 			</view>
-			<!-- <navigator url="../helpInfo/helpInfo?id={{iitem.id}}" class="list-cell" wx:for="{{helpList[item.value]}}" wx:for-item="iitem" wx:key="{{index}}">
-				<view class="list-cell-bd">
-					<view class="list-label">{{iitem.question}}</view>
-				</view>
-				<view class="list-cell-ft router"></view>
-			</navigator> -->
 		</view>
 	</view>
 </view>

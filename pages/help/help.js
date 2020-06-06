@@ -1,10 +1,12 @@
 var api = require("../../utils/api.js");
+var WxParse = require('../../wxParse/wxParse.js');
 // pages/ucenter/help/help.js
 Page({
   data:{
     helpList: {1: [], 2: []},
     options: [],
-    selected: {}
+    selected: {},
+    tempIndex: {} // 用来记录坐标的；
   },
   getHelpList() {
     let that = this;
@@ -13,7 +15,26 @@ Page({
         that.setData({
           helpList: res.result
         })
-        console.log(that.data.helpList[1])
+        const tempIndex = {};
+        let len = 0;
+        let index = 0;
+        for (let j = 0; j < that.data.options.length; j++) {
+          const o = that.data.options[j]
+          if (res.result[o.value]) {
+            len += res.result[o.value].length;
+            res.result[o.value].forEach((item, ii) => {
+              // console.log(item.answer);
+              WxParse.wxParse('reply' + index, 'html', item.answer, that);
+              tempIndex[j + '_' + ii] = index;
+              index++;
+            })
+          }
+        }
+        WxParse.wxParseTemArray("replyTemArray",'reply', len, that);
+        console.log(tempIndex);
+        that.setData({
+          tempIndex
+        })
       }
     });
   },
@@ -30,6 +51,21 @@ Page({
     });
     // this.getHelpList()
 
+  },
+  getIndex(optionsIndex, index) {
+    console.log(optionsIndex, index);
+    let res = index;
+    for (let i = 0; i < this.data.options.length; i++) {
+      if (optionsIndex === i) {
+        break;
+      }
+      const element = this.data.options[i];
+      console.log(this.data.helpList[element.value],this.data.helpList[element.value].length);
+      res += this.data.helpList[element.value].length || 0;
+      
+    }
+    console.log(res);
+    return res
   },
   select(event) {
     const selected = {...this.data.selected};

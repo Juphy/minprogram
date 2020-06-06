@@ -6,6 +6,9 @@ page ,.container{
    background: #f4f4f4;
    position: relative;
 }
+
+@import "/wxParse/wxParse.wxss";
+
 .help-head{
  padding: 30rpx;
  font-size: 35rpx;
@@ -31,14 +34,14 @@ page ,.container{
 }
 
 .list-cell .list-rich .rich {
-  margin-left: 20rpx;
   flex: 1;
 }
 
 .list-cell .list-rich .rich-img {
   width: 30rpx;
   height: 30rpx;
-  flex: 40rpx 0 0;
+  flex: 35rpx 0 0;
+  margin-right: 20rpx;
 }
 
 .list-cell .img {
