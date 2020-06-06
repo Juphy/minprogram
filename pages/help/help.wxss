@@ -12,9 +12,37 @@ page ,.container{
 }
 .list-cell {
   background-color: #fff;
+  box-sizing: border-box;
+}
+
+.list-cell .list-label {
   padding: 20rpx;
+  border-bottom: 1rpx solid #ddd;
 }
 
 .list-cell .list-rich {
+  border-bottom: 1rpx solid #ddd;
+  padding: 20rpx;
   color: #666;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-cell .list-rich .rich {
+  margin-left: 20rpx;
+  flex: 1;
+}
+
+.list-cell .list-rich .rich-img {
+  width: 30rpx;
+  height: 30rpx;
+  flex: 40rpx 0 0;
+}
+
+.list-cell .img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
 }

@@ -2,7 +2,7 @@ var api = require("../../utils/api.js");
 // pages/ucenter/help/help.js
 Page({
   data:{
-    helpList: {1: [{question: 'aaaa'}, {question: 'aaaa'}, {question: 'aaaa'}], 2: []},
+    helpList: {1: [], 2: []},
     options: [],
     selected: {}
   },
