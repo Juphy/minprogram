@@ -1,11 +1,13 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
 	<view wx:for="{{options}}" wx:for-item="item" wx:for-index="oi">
-		<view class="help-head">{{item.name + oi}}</view>
+		<view class="help-head">{{item.name}}</view>
 		<view class="list-group" style="margin-top: 0;">
 			<view class="list-cell" wx:for="{{helpList[item.value]}}" wx:for-item="iitem" wx:key="{{index}}">
 				<view class="list-label" bindtap="select" data-id="{{iitem.id}}">
-					<image class="img" src="../../image/question-circle.png"></image>{{iitem.question}}
+					<image class="img" src="../../image/question-circle.png"></image>
+					<text>{{iitem.question}}</text>
+					<image class="img-icon" style='transform:rotate({{selected[iitem.id]?90:0}}deg);transition:all 0.4s;' src="../../image/address_right.png"></image>
 				</view>
 				<view hidden="{{!selected[iitem.id]}}">
 					<view class="list-rich">

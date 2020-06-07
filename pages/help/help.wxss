@@ -13,6 +13,13 @@ page ,.container{
  padding: 30rpx;
  font-size: 35rpx;
 }
+
+.img-icon {
+  float: right;
+  width: 50rpx;
+  height: 50rpx;
+}
+
 .list-cell {
   background-color: #fff;
   box-sizing: border-box;
